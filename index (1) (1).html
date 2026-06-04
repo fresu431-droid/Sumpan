@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Min ekonomi">
+<meta name="theme-color" content="#f5f5f3">
+<title>Min ekonomi</title>
+
+<link rel="manifest" id="manifest-placeholder">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f3;color:#1a1a18;padding-bottom:env(safe-area-inset-bottom)}
+.app{width:100%;max-width:680px;margin:0 auto;padding:1rem 1rem 2rem}
+.tabs{display:flex;gap:4px;margin-bottom:1.25rem;background:#e8e8e4;border-radius:12px;padding:4px;position:sticky;top:8px;z-index:10}
+.tab{flex:1;padding:8px 4px;border:none;background:transparent;cursor:pointer;border-radius:8px;font-size:12px;font-weight:500;color:#777;transition:all .15s}
+.tab.active{background:#fff;color:#1a1a18;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.sec{display:none}.sec.active{display:block}
+.card{background:#fff;border:0.5px solid rgba(0,0,0,.09);border-radius:12px;padding:1rem 1.1rem;margin-bottom:.85rem}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem}
+.metric{background:#f5f5f3;border-radius:8px;padding:.6rem .7rem}
+.metric-label{font-size:9px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.3px}
+.metric-value{font-size:14px;font-weight:600;color:#1a1a18}
+.pos{color:#3B6D11}.neg{color:#A32D2D}.spar{color:#185FA5}
+.cat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.9rem}
+.chip{padding:7px 12px;border:0.5px solid rgba(0,0,0,.15);border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;background:#f5f5f3;color:#555;display:flex;align-items:center;gap:5px;transition:all .1s}
+.chip.sel{border-width:1.5px;color:#fff}
+.inp-row{display:flex;gap:6px;flex-wrap:wrap}
+.inp{padding:9px 10px;border:0.5px solid rgba(0,0,0,.15);border-radius:9px;background:#f5f5f3;font-size:14px;color:#1a1a18;font-family:inherit;-webkit-appearance:none}
+.inp:focus{outline:none;border-color:#378ADD;background:#fff}
+.inp-desc{flex:1;min-width:120px}
+.inp-amt{width:95px}
+.add-btn{padding:9px 14px;border:none;border-radius:9px;background:#378ADD;color:#fff;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap}
+.add-btn:disabled{opacity:.3;cursor:default}
+.txn-list{display:flex;flex-direction:column;gap:3px;max-height:400px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.txn{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;background:#f5f5f3}
+.txn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.txn-desc{flex:1;min-width:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.txn-meta{font-size:11px;color:#aaa}
+.txn-amt{font-size:13px;font-weight:600;flex-shrink:0;min-width:72px;text-align:right}
+.del-btn{background:none;border:none;cursor:pointer;color:#ccc;padding:0 3px;font-size:16px;line-height:1}
+.del-btn:hover{color:#A32D2D}
+.filter-row{display:flex;gap:5px;margin-bottom:.75rem;flex-wrap:wrap;overflow-x:auto;padding-bottom:2px}
+.fbtn{padding:4px 10px;border:0.5px solid rgba(0,0,0,.15);border-radius:20px;font-size:11px;cursor:pointer;background:transparent;color:#777;white-space:nowrap;flex-shrink:0}
+.fbtn.on{background:#f0f0ec;color:#1a1a18;border-color:rgba(0,0,0,.25)}
+.month-sel{display:flex;align-items:center;gap:6px;margin-bottom:.9rem}
+.month-sel select{flex:1;padding:9px 10px;border:0.5px solid rgba(0,0,0,.15);border-radius:9px;background:#f5f5f3;font-size:14px;color:#1a1a18;font-family:inherit;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+.mnav{background:#f5f5f3;border:0.5px solid rgba(0,0,0,.15);border-radius:9px;padding:9px 12px;cursor:pointer;font-size:16px;color:#555;line-height:1}
+.sec-title{font-size:12px;font-weight:500;color:#888;margin-bottom:.75rem;display:flex;align-items:center;gap:5px;text-transform:uppercase;letter-spacing:.3px}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.bar-label{font-size:12px;color:#666;flex:0 0 72px}
+.bar-track{flex:1;height:5px;background:#f0f0ec;border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-val{font-size:11px;color:#888;flex:0 0 76px;text-align:right}
+.w-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.w-label{font-size:13px;color:#666;flex:0 0 150px}
+.w-inp{flex:1;padding:8px 10px;border:0.5px solid rgba(0,0,0,.13);border-radius:0 8px 8px 0;background:#f5f5f3;font-size:13px;color:#1a1a18;font-family:inherit;-webkit-appearance:none}
+.w-inp.a{border-left:2.5px solid #3B6D11}
+.w-inp.d{border-left:2.5px solid #E24B4A}
+.empty{text-align:center;padding:2rem;color:#bbb;font-size:13px}
+.type-toggle{display:flex;gap:4px;margin-bottom:.9rem}
+.tt{flex:1;padding:8px 4px;border:1px solid rgba(0,0,0,.12);border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;background:#f5f5f3;color:#666;transition:all .1s}
+.tt.on{background:#fff}
+.metrics-2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.wealth-net{background:#fff;border:0.5px solid rgba(0,0,0,.09);border-radius:12px;padding:1rem 1.1rem;margin-bottom:.85rem;grid-column:span 2}
+.install-banner{background:#EAF3DE;border:0.5px solid #97C459;border-radius:10px;padding:.75rem 1rem;margin-bottom:1rem;font-size:12px;color:#3B6D11;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.install-banner button{background:none;border:none;cursor:pointer;font-size:16px;color:#3B6D11;padding:0}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div id="installBanner" class="install-banner" style="display:none">
+  <span>📲 Tryck på dela-ikonen och välj <strong>Lägg till på hemskärmen</strong> för att installera appen</span>
+  <button onclick="document.getElementById('installBanner').style.display='none'">✕</button>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('log',this)">💳 Bokföring</button>
+  <button class="tab" onclick="showTab('year',this)">📊 Översikt</button>
+  <button class="tab" onclick="showTab('wealth',this)">⚖️ Förmögenhet</button>
+</div>
+
+<div id="sec-log" class="sec active">
+  <div class="card">
+    <div class="sec-title">Ny post</div>
+    <div class="type-toggle">
+      <button class="tt" id="tt-inc" onclick="setType('income',this)">↑ Inkomst</button>
+      <button class="tt on" id="tt-exp" onclick="setType('expense',this)" style="border-color:#378ADD;color:#185FA5">↓ Konsumtion</button>
+      <button class="tt" id="tt-sav" onclick="setType('saving',this)">🏦 Sparande</button>
+    </div>
+    <div class="month-sel">
+      <button class="mnav" onclick="shiftMonth(-1)">‹</button>
+      <select id="monthSelect" onchange="onMonthChange()"></select>
+      <button class="mnav" onclick="shiftMonth(1)">›</button>
+    </div>
+    <div class="cat-chips" id="chips"></div>
+    <div class="inp-row">
+      <input class="inp inp-desc" id="desc" type="text" placeholder="Beskrivning…" autocomplete="off">
+      <input class="inp inp-amt" id="amount" type="number" min="0" step="1" placeholder="kr" inputmode="numeric">
+      <button class="add-btn" id="addBtn" onclick="addTxn()" disabled>+ Lägg till</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sec-title" id="logTitle"></div>
+    <div class="metrics" id="mmetrics"></div>
+    <div class="filter-row" id="frow"></div>
+    <div class="txn-list" id="tlist"></div>
+  </div>
+</div>
+
+<div id="sec-year" class="sec">
+  <div class="card">
+    <div class="sec-title">Årsöversikt 2026</div>
+    <div class="metrics" id="ymetrics"></div>
+    <div style="position:relative;width:100%;height:200px;margin-top:.75rem">
+      <canvas id="ychart"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sec-title">Konsumtion per kategori</div>
+    <div id="catbars"></div>
+  </div>
+  <div class="card">
+    <div class="sec-title">Sparande per kategori</div>
+    <div id="savbars"></div>
+  </div>
+</div>
+
+<div id="sec-wealth" class="sec">
+  <div class="metrics-2" id="wmetrics"></div>
+  <div class="card">
+    <div class="sec-title" style="color:#3B6D11">Tillgångar</div>
+    <div class="w-row"><span class="w-label">Nordnet/fonder</span><input class="w-inp a" id="w_nordnet" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Buffert (sparkonto)</span><input class="w-inp a" id="w_buffert" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Handelsbanken</span><input class="w-inp a" id="w_hb" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Bil (marknadsvärde)</span><input class="w-inp a" id="w_bil" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Övrigt</span><input class="w-inp a" id="w_oa" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+  </div>
+  <div class="card">
+    <div class="sec-title" style="color:#A32D2D">Skulder</div>
+    <div class="w-row"><span class="w-label">CSN</span><input class="w-inp d" id="w_csn" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Blancolån</span><input class="w-inp d" id="w_blanco" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Restvärdelån (bil)</span><input class="w-inp d" id="w_restvarde" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Kreditkort</span><input class="w-inp d" id="w_kk" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+    <div class="w-row"><span class="w-label">Övrigt</span><input class="w-inp d" id="w_od" type="number" inputmode="numeric" placeholder="0" oninput="saveW()"></div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const MONTHS=['Januari','Februari','Mars','April','Maj','Juni','Juli','Augusti','September','Oktober','November','December'];
+const MS=['Jan','Feb','Mar','Apr','Maj','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+const EXP_CATS=[
+  {id:'bostad',label:'Bostad',color:'#185FA5'},
+  {id:'bil',label:'Bil',color:'#854F0B'},
+  {id:'barn',label:'Barn',color:'#3B6D11'},
+  {id:'jag',label:'Jag',color:'#534AB7'},
+  {id:'mat',label:'Mat',color:'#0F6E56'},
+  {id:'avbetalning',label:'Avbetalning',color:'#993556'},
+];
+const SAV_CATS=[
+  {id:'spar_barn',label:'Barnens spar',color:'#3B6D11'},
+  {id:'spar_buffert',label:'Buffert',color:'#185FA5'},
+  {id:'spar_ovrigt',label:'Övrigt spar',color:'#639922'},
+];
+const INC_CATS=[
+  {id:'lon',label:'Lön',color:'#185FA5'},
+  {id:'bidrag',label:'Bidrag/överfört',color:'#3B6D11'},
+  {id:'extra',label:'Extrainkomst',color:'#854F0B'},
+];
+const SEED=[
+  {id:1,type:'expense',cat:'bostad',desc:'Hyra + fasta boendekostnader',amount:12549,ym:'2026-01'},
+  {id:2,type:'expense',cat:'bil',desc:'Bil (försäkring, parkering, underhåll)',amount:1929,ym:'2026-01'},
+  {id:3,type:'expense',cat:'barn',desc:'Barn (kläder, aktiviteter, utflykter)',amount:6301,ym:'2026-01'},
+  {id:4,type:'expense',cat:'jag',desc:'Fredrik (nöjen, kläder, gym, övrigt)',amount:4873,ym:'2026-01'},
+  {id:5,type:'expense',cat:'avbetalning',desc:'Avbetalningar (CSN, blancolån)',amount:2478,ym:'2026-01'},
+  {id:6,type:'expense',cat:'mat',desc:'Mat och utemat',amount:3227,ym:'2026-01'},
+  {id:7,type:'saving',cat:'spar_ovrigt',desc:'Sparande jan',amount:1400,ym:'2026-01'},
+  {id:8,type:'income',cat:'lon',desc:'Lön',amount:26800,ym:'2026-01'},
+  {id:9,type:'income',cat:'bidrag',desc:'Överfört/bidrag',amount:3200,ym:'2026-01'},
+  {id:10,type:'income',cat:'extra',desc:'Extrainkomst',amount:4500,ym:'2026-01'},
+  {id:11,type:'expense',cat:'bostad',desc:'Hyra + fasta boendekostnader',amount:12849,ym:'2026-02'},
+  {id:12,type:'expense',cat:'bil',desc:'Bil (försäkring, bränsle, underhåll)',amount:1697,ym:'2026-02'},
+  {id:13,type:'expense',cat:'barn',desc:'Barn (kläder, utflykter)',amount:3121,ym:'2026-02'},
+  {id:14,type:'expense',cat:'jag',desc:'Fredrik (nöjen, gym, övrigt)',amount:2503,ym:'2026-02'},
+  {id:15,type:'expense',cat:'avbetalning',desc:'Avbetalningar',amount:2116,ym:'2026-02'},
+  {id:16,type:'expense',cat:'mat',desc:'Mat och utemat',amount:6591,ym:'2026-02'},
+  {id:17,type:'saving',cat:'spar_buffert',desc:'Sparande feb',amount:2400,ym:'2026-02'},
+  {id:18,type:'income',cat:'lon',desc:'Lön',amount:26400,ym:'2026-02'},
+  {id:19,type:'income',cat:'bidrag',desc:'Överfört/bidrag',amount:3200,ym:'2026-02'},
+  {id:20,type:'expense',cat:'bostad',desc:'Hyra + fasta boendekostnader',amount:12399,ym:'2026-03'},
+  {id:21,type:'expense',cat:'bil',desc:'Bil (stor service/däckbyte)',amount:6805,ym:'2026-03'},
+  {id:22,type:'expense',cat:'barn',desc:'Barn',amount:3008,ym:'2026-03'},
+  {id:23,type:'expense',cat:'jag',desc:'Fredrik (nöjen, frisör, kläder, gym)',amount:5555,ym:'2026-03'},
+  {id:24,type:'expense',cat:'avbetalning',desc:'Avbetalningar',amount:485,ym:'2026-03'},
+  {id:25,type:'expense',cat:'mat',desc:'Mat och utemat',amount:6213,ym:'2026-03'},
+  {id:26,type:'saving',cat:'spar_barn',desc:'Barnens sparande mars',amount:400,ym:'2026-03'},
+  {id:27,type:'income',cat:'lon',desc:'Lön',amount:25800,ym:'2026-03'},
+  {id:28,type:'income',cat:'bidrag',desc:'Överfört/bidrag',amount:3800,ym:'2026-03'},
+  {id:29,type:'income',cat:'extra',desc:'Extrainkomst',amount:2000,ym:'2026-03'},
+  {id:30,type:'expense',cat:'bostad',desc:'Hyra + fasta boendekostnader',amount:12729,ym:'2026-04'},
+  {id:31,type:'expense',cat:'bil',desc:'Bil (avbetalning, bränsle, försäkring)',amount:4762,ym:'2026-04'},
+  {id:32,type:'expense',cat:'barn',desc:'Barn (kläder, utflykter, aktiviteter)',amount:7046,ym:'2026-04'},
+  {id:33,type:'expense',cat:'jag',desc:'Fredrik (nöjen, gym, övrigt)',amount:3864,ym:'2026-04'},
+  {id:34,type:'expense',cat:'avbetalning',desc:'Avbetalningar',amount:478,ym:'2026-04'},
+  {id:35,type:'expense',cat:'mat',desc:'Mat och utemat',amount:5346,ym:'2026-04'},
+  {id:36,type:'saving',cat:'spar_ovrigt',desc:'Sparande april',amount:2400,ym:'2026-04'},
+  {id:37,type:'income',cat:'lon',desc:'Lön',amount:26700,ym:'2026-04'},
+  {id:38,type:'income',cat:'bidrag',desc:'Bidrag/överfört',amount:3800,ym:'2026-04'},
+  {id:39,type:'income',cat:'extra',desc:'Extrainkomst',amount:13700,ym:'2026-04'},
+  {id:40,type:'expense',cat:'bostad',desc:'Hyra + fasta boendekostnader',amount:12615,ym:'2026-05'},
+  {id:41,type:'expense',cat:'bil',desc:'Bil (avbetalning, bränsle, försäkring, parkering)',amount:5550,ym:'2026-05'},
+  {id:42,type:'expense',cat:'barn',desc:'Barn (utflykter, aktiviteter, kläder)',amount:7828,ym:'2026-05'},
+  {id:43,type:'expense',cat:'jag',desc:'Fredrik (nöjen, kläder, gym)',amount:5220,ym:'2026-05'},
+  {id:44,type:'expense',cat:'avbetalning',desc:'Avbetalningar',amount:498,ym:'2026-05'},
+  {id:45,type:'expense',cat:'mat',desc:'Mat och utemat',amount:5238,ym:'2026-05'},
+  {id:46,type:'saving',cat:'spar_ovrigt',desc:'Sparande maj',amount:2400,ym:'2026-05'},
+  {id:47,type:'income',cat:'lon',desc:'Lön',amount:26800,ym:'2026-05'},
+  {id:48,type:'income',cat:'bidrag',desc:'Överfört/bidrag',amount:3800,ym:'2026-05'},
+];
+
+let st={txns:[...SEED],wealth:{nordnet:0,buffert:0,hb:0,bil:0,oa:0,csn:3000,blanco:183700,restvarde:0,kk:0,od:0},selCat:null,entryType:'expense',filterCat:'all'};
+let vYM='2026-05';
+let chartInst=null;
+
+try{const s=localStorage.getItem('ek4');if(s){const p=JSON.parse(s);if(p&&p.txns&&p.txns.length>=SEED.length)st=p;}}catch(e){}
+function save(){try{localStorage.setItem('ek4',JSON.stringify(st));}catch(e){}}
+
+const fn=n=>Math.round(n).toLocaleString('sv-SE');
+const vn=x=>parseFloat(x)||0;
+function allCats(){return[...INC_CATS,...EXP_CATS,...SAV_CATS];}
+function catById(id){return allCats().find(c=>c.id===id)||EXP_CATS[0];}
+function catsForType(t){return t==='income'?INC_CATS:t==='saving'?SAV_CATS:EXP_CATS;}
+
+function buildMonthSelect(){
+  const sel=document.getElementById('monthSelect');
+  const opts=[];
+  for(let y=2026;y<=2027;y++){
+    for(let m=0;m<12;m++){
+      const ym=y+'-'+String(m+1).padStart(2,'0');
+      opts.push(`<option value="${ym}"${ym===vYM?' selected':''}>${MONTHS[m]} ${y}</option>`);
+    }
+  }
+  sel.innerHTML=opts.join('');
+}
+function onMonthChange(){vYM=document.getElementById('monthSelect').value;renderLog();}
+function shiftMonth(d){
+  const[y,m]=vYM.split('-').map(Number);
+  let nm=m-1+d,ny=y;
+  if(nm<0){nm=11;ny--;}else if(nm>11){nm=0;ny++;}
+  vYM=ny+'-'+String(nm+1).padStart(2,'0');
+  buildMonthSelect();renderLog();
+}
+
+function setType(t,btn){
+  st.entryType=t;st.selCat=null;
+  document.querySelectorAll('.tt').forEach(b=>{b.style.borderColor='';b.style.color='';b.classList.remove('on');});
+  btn.classList.add('on');
+  const c={income:'#3B6D11',expense:'#378ADD',saving:'#639922'}[t];
+  btn.style.borderColor=c;btn.style.color=c;
+  renderChips();checkBtn();
+}
+function renderChips(){
+  document.getElementById('chips').innerHTML=catsForType(st.entryType).map(c=>`
+    <button class="chip${st.selCat===c.id?' sel':''}"
+      style="${st.selCat===c.id?'background:'+c.color+';border-color:'+c.color:''}"
+      onclick="selCat('${c.id}')">${c.label}</button>`).join('');
+}
+function selCat(id){st.selCat=(st.selCat===id?null:id);renderChips();checkBtn();}
+function checkBtn(){document.getElementById('addBtn').disabled=!(st.selCat&&vn(document.getElementById('amount').value)>0);}
+
+function addTxn(){
+  const desc=document.getElementById('desc').value.trim();
+  const amount=vn(document.getElementById('amount').value);
+  if(!st.selCat||!amount)return;
+  st.txns.push({id:Date.now(),type:st.entryType,cat:st.selCat,desc:desc||catById(st.selCat).label,amount,ym:vYM});
+  save();
+  document.getElementById('desc').value='';
+  document.getElementById('amount').value='';
+  renderLog();
+}
+function delTxn(id){if(!confirm('Ta bort posten?'))return;st.txns=st.txns.filter(t=>t.id!==id);save();renderLog();}
+
+function renderLog(){
+  const[y,m]=vYM.split('-').map(Number);
+  document.getElementById('logTitle').textContent=MONTHS[m-1]+' '+y;
+  const all=st.txns.filter(t=>t.ym===vYM);
+  const inc=all.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const exp=all.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const sav=all.filter(t=>t.type==='saving').reduce((s,t)=>s+t.amount,0);
+  const net=inc-exp-sav;
+  document.getElementById('mmetrics').innerHTML=`
+    <div class="metric"><div class="metric-label">Inkomst</div><div class="metric-value pos">${fn(inc)}</div></div>
+    <div class="metric"><div class="metric-label">Konsumtion</div><div class="metric-value neg">${fn(exp)}</div></div>
+    <div class="metric"><div class="metric-label">Sparande</div><div class="metric-value spar">${fn(sav)}</div></div>
+    <div class="metric"><div class="metric-label">Kvar</div><div class="metric-value ${net>=0?'pos':'neg'}">${fn(net)}</div></div>`;
+  const shown=st.filterCat==='all'?all:all.filter(t=>{
+    if(st.filterCat==='income')return t.type==='income';
+    if(st.filterCat==='saving')return t.type==='saving';
+    return t.cat===st.filterCat;
+  });
+  const expCatsUsed=[...new Set(all.filter(t=>t.type==='expense').map(t=>t.cat))];
+  document.getElementById('frow').innerHTML=
+    `<button class="fbtn${st.filterCat==='all'?' on':''}" onclick="setF('all')">Alla</button>`+
+    (all.some(t=>t.type==='income')?`<button class="fbtn${st.filterCat==='income'?' on':''}" onclick="setF('income')">Inkomster</button>`:'')+
+    expCatsUsed.map(c=>`<button class="fbtn${st.filterCat===c?' on':''}" onclick="setF('${c}')">${catById(c).label}</button>`).join('')+
+    (all.some(t=>t.type==='saving')?`<button class="fbtn${st.filterCat==='saving'?' on':''}" onclick="setF('saving')">Sparande</button>`:'');
+  const list=document.getElementById('tlist');
+  if(!shown.length){list.innerHTML=`<div class="empty">Inga poster bokförda</div>`;return;}
+  list.innerHTML=shown.map(t=>{
+    const c=catById(t.cat);
+    const sign=t.type==='income'?'+':'−';
+    const cls=t.type==='income'?'pos':t.type==='saving'?'spar':'neg';
+    return`<div class="txn">
+      <div class="txn-dot" style="background:${c.color}"></div>
+      <div style="flex:1;min-width:0">
+        <div class="txn-desc">${t.desc}</div>
+        <div class="txn-meta">${c.label}${t.type==='saving'?' · Sparande':t.type==='income'?' · Inkomst':''}</div>
+      </div>
+      <div class="txn-amt ${cls}">${sign}${fn(t.amount)}</div>
+      <button class="del-btn" onclick="delTxn(${t.id})">×</button>
+    </div>`;}).join('');
+}
+function setF(f){st.filterCat=f;renderLog();}
+
+function renderYear(){
+  const yr=2026;
+  const allY=st.txns.filter(t=>t.ym&&t.ym.startsWith(yr+'-'));
+  const tI=allY.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const tE=allY.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const tS=allY.filter(t=>t.type==='saving').reduce((s,t)=>s+t.amount,0);
+  const net=tI-tE-tS;
+  document.getElementById('ymetrics').innerHTML=`
+    <div class="metric"><div class="metric-label">Inkomster</div><div class="metric-value pos">${fn(tI)}</div></div>
+    <div class="metric"><div class="metric-label">Konsumtion</div><div class="metric-value neg">${fn(tE)}</div></div>
+    <div class="metric"><div class="metric-label">Sparande</div><div class="metric-value spar">${fn(tS)}</div></div>
+    <div class="metric"><div class="metric-label">Netto</div><div class="metric-value ${net>=0?'pos':'neg'}">${fn(net)}</div></div>`;
+  const mI=[...Array(12)].map((_,i)=>{const p=yr+'-'+String(i+1).padStart(2,'0');return allY.filter(t=>t.ym===p&&t.type==='income').reduce((s,t)=>s+t.amount,0)||null;});
+  const mE=[...Array(12)].map((_,i)=>{const p=yr+'-'+String(i+1).padStart(2,'0');return allY.filter(t=>t.ym===p&&t.type==='expense').reduce((s,t)=>s+t.amount,0)||null;});
+  const mS=[...Array(12)].map((_,i)=>{const p=yr+'-'+String(i+1).padStart(2,'0');return allY.filter(t=>t.ym===p&&t.type==='saving').reduce((s,t)=>s+t.amount,0)||null;});
+  if(chartInst){chartInst.destroy();chartInst=null;}
+  chartInst=new Chart(document.getElementById('ychart'),{type:'bar',data:{labels:MS,datasets:[
+    {label:'Inkomst',data:mI,backgroundColor:'#97C45977',borderColor:'#3B6D11',borderWidth:1},
+    {label:'Konsumtion',data:mE,backgroundColor:'#85B7EB77',borderColor:'#185FA5',borderWidth:1},
+    {label:'Sparande',data:mS,backgroundColor:'#B5D4F477',borderColor:'#534AB7',borderWidth:1},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{autoSkip:false,font:{size:9}}},y:{ticks:{callback:n=>fn(n),font:{size:9}}}}}});
+  const catData=EXP_CATS.map(c=>({c,tot:allY.filter(t=>t.type==='expense'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0)})).filter(x=>x.tot>0).sort((a,b)=>b.tot-a.tot);
+  const mx=catData.length?catData[0].tot:1;
+  document.getElementById('catbars').innerHTML=catData.length?catData.map(x=>`
+    <div class="bar-row">
+      <div class="bar-label">${x.c.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(x.tot/mx*100)}%;background:${x.c.color}"></div></div>
+      <div class="bar-val">${fn(x.tot)} kr</div>
+    </div>`).join(''):'<div class="empty">Inga poster</div>';
+  const savData=SAV_CATS.map(c=>({c,tot:allY.filter(t=>t.type==='saving'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0)})).filter(x=>x.tot>0).sort((a,b)=>b.tot-a.tot);
+  const mxS=savData.length?savData[0].tot:1;
+  document.getElementById('savbars').innerHTML=savData.length?savData.map(x=>`
+    <div class="bar-row">
+      <div class="bar-label">${x.c.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(x.tot/mxS*100)}%;background:${x.c.color}"></div></div>
+      <div class="bar-val">${fn(x.tot)} kr</div>
+    </div>`).join(''):'<div class="empty">Inga poster</div>';
+}
+
+function saveW(){
+  ['nordnet','buffert','hb','bil','oa','csn','blanco','restvarde','kk','od'].forEach(k=>{const el=document.getElementById('w_'+k);if(el)st.wealth[k]=vn(el.value);});
+  save();renderWMetrics();
+}
+function renderWMetrics(){
+  const w=st.wealth||{};
+  const assets=(w.nordnet||0)+(w.buffert||0)+(w.hb||0)+(w.bil||0)+(w.oa||0);
+  const debts=(w.csn||0)+(w.blanco||0)+(w.restvarde||0)+(w.kk||0)+(w.od||0);
+  const net=assets-debts;
+  document.getElementById('wmetrics').innerHTML=`
+    <div class="metric"><div class="metric-label">Tillgångar</div><div class="metric-value pos">${fn(assets)} kr</div></div>
+    <div class="metric"><div class="metric-label">Skulder</div><div class="metric-value neg">${fn(debts)} kr</div></div>
+    <div class="metric wealth-net" style="grid-column:span 2"><div class="metric-label">Nettoförmögenhet</div><div class="metric-value ${net>=0?'pos':'neg'}" style="font-size:20px">${fn(net)} kr</div></div>`;
+}
+function loadWInputs(){
+  const w=st.wealth||{};
+  ['nordnet','buffert','hb','bil','oa','csn','blanco','restvarde','kk','od'].forEach(k=>{const el=document.getElementById('w_'+k);if(el&&w[k])el.value=w[k];});
+}
+function showTab(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='year')renderYear();
+  if(id==='wealth'){renderWMetrics();loadWInputs();}
+}
+
+// PWA manifest injected inline
+const manifest={name:'Min ekonomi',short_name:'Ekonomi',start_url:'./',display:'standalone',background_color:'#f5f5f3',theme_color:'#f5f5f3',icons:[{src:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%23185FA5"/><text y=".9em" font-size="70" x="50%" text-anchor="middle">💰</text></svg>',sizes:'any',type:'image/svg+xml'}]};
+const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
+document.getElementById('manifest-placeholder').href=URL.createObjectURL(blob);
+
+// Service worker for offline
+if('serviceWorker' in navigator){
+  const sw=`const CACHE='ek-v1';self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./',location.href]))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{const c=res.clone();caches.open(CACHE).then(ca=>ca.put(e.request,c));return res;}))));`;
+  const swBlob=new Blob([sw],{type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(()=>{});
+}
+
+// Show install banner on iOS if not standalone
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+const isStandalone=window.navigator.standalone===true;
+if(isIOS&&!isStandalone){document.getElementById('installBanner').style.display='flex';}
+
+document.getElementById('amount').oninput=checkBtn;
+const now=new Date();
+vYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+buildMonthSelect();
+setType('expense',document.getElementById('tt-exp'));
+renderLog();
+save();
+</script>
+</body>
+</html>
