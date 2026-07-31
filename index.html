@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
@@ -98,12 +98,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </head>
 <body>
 <div class="app">
-
+ 
 <div id="installBanner" class="install-banner" style="display:none">
   <span>📲 Dela → <strong>Lägg till på hemskärmen</strong> för att installera</span>
   <button onclick="document.getElementById('installBanner').style.display='none'">✕</button>
 </div>
-
+ 
 <div class="tabs">
   <button class="tab active" onclick="showTab('log',this)">✏️ Bokföring</button>
   <button class="tab" onclick="showTab('month',this)">📅 Månad</button>
@@ -111,7 +111,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <button class="tab" onclick="showTab('wealth',this)">⚖️ Förmögenhet</button>
   <button class="tab" onclick="showTab('data',this)">💾 Data</button>
 </div>
-
+ 
 <!-- BOKFÖRING -->
 <div id="sec-log" class="sec active">
   <div class="card">
@@ -146,7 +146,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="txn-list" id="tlist"></div>
   </div>
 </div>
-
+ 
 <!-- MÅNADSVY -->
 <div id="sec-month" class="sec">
   <div class="month-sel" style="margin-bottom:1rem">
@@ -155,7 +155,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <button class="mnav" onclick="shiftMonthView(1)">›</button>
   </div>
   <div id="monthOverview"></div>
-
+ 
   <div class="card">
     <div class="sec-title">🤔 Vad händer om...?</div>
     <p style="font-size:12px;color:#888;margin-bottom:.75rem;line-height:1.4">Se hur ett engångsköp påverkar ditt löpande 12-månaderssnitt och sparkvoten denna månad — utan att det bokförs på riktigt.</p>
@@ -166,7 +166,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div id="whatifResult"></div>
   </div>
 </div>
-
+ 
 <!-- ÅRSVY -->
 <div id="sec-year" class="sec">
   <div class="card">
@@ -185,7 +185,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div id="savbars"></div>
   </div>
 </div>
-
+ 
 <!-- FÖRMÖGENHET -->
 <div id="sec-wealth" class="sec">
   <div class="month-sel" style="margin-bottom:1rem">
@@ -230,11 +230,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
     <div id="snapshotList" style="margin-top:1rem"></div>
   </div>
-
+ 
   <div class="card">
     <div class="sec-title">📈 Förmögenhetsprognos</div>
     <p style="font-size:12px;color:#888;margin-bottom:.9rem;line-height:1.4">Baserad på dina nuvarande saldon per konto, ditt verkliga sparmönster senaste 12 månaderna, och rimlig avkastning per kontotyp.</p>
-
+ 
     <div style="margin-bottom:.9rem">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:#f5f5f3;border-radius:8px;margin-bottom:4px">
         <span style="font-size:12px;color:#555">📈 Nordnet sparkonto (indexfonder)</span>
@@ -253,7 +253,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <p style="font-size:10px;color:#bbb;margin-top:6px">Justera räntan per konto efter vad de faktiskt ger. Förslag: indexfonder ~7% historiskt snitt, vanligt sparkonto/kontanter ~1–2,5%.</p>
     </div>
-
+ 
     <div style="border-top:0.5px solid #f0f0ec;padding-top:.75rem;margin-bottom:.75rem">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <span style="font-size:12px;color:#555">→ Nordnet sparkonto (snitt 12 mån)</span>
@@ -269,9 +269,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <p style="font-size:10px;color:#bbb;margin-top:4px">Beräknat automatiskt: "Övrigt spar" → Nordnet sparkonto, "Buffert" → buffertkonto, "Barnens spar" → Handelsbanken.</p>
     </div>
-
+ 
     <div class="w-row"><span class="w-label">Eget sparande, override</span><input class="w-inp a" id="calc_monthly_override" type="number" inputmode="numeric" placeholder="Lämna tomt för auto" oninput="renderSavingsCalc()"></div>
-
+ 
     <div id="calcResult" style="margin-top:1rem"></div>
     <div style="position:relative;width:100%;height:190px;margin-top:.75rem">
       <canvas id="calcChart"></canvas>
@@ -279,7 +279,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <p style="font-size:10px;color:#bbb;margin-top:8px;line-height:1.4">Förenklad prognos. Antar konstant avkastning och oförändrat sparmönster. Faktisk avkastning varierar år till år och garanteras inte — särskilt för fonder.</p>
   </div>
 </div>
-
+ 
 <!-- DATA -->
 <div id="sec-data" class="sec">
   <div class="card">
@@ -323,14 +323,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <button onclick="resetData()" style="width:100%;padding:12px;border:none;border-radius:9px;background:#FEE2E2;color:#A32D2D;font-size:14px;font-weight:600;cursor:pointer">🗑️ Återställ all data</button>
   </div>
 </div>
-
+ 
 </div><!-- end app -->
-
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 const MONTHS=['Januari','Februari','Mars','April','Maj','Juni','Juli','Augusti','September','Oktober','November','December'];
 const MS=['Jan','Feb','Mar','Apr','Maj','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
-
+ 
 const EXP_CATS=[
   {id:'bostad',label:'Bostad',color:'#185FA5'},
   {id:'bil',label:'Bil',color:'#854F0B'},
@@ -349,7 +349,7 @@ const INC_CATS=[
   {id:'bidrag',label:'Bidrag/överfört',color:'#3B6D11'},
   {id:'extra',label:'Extrainkomst',color:'#854F0B'},
 ];
-
+ 
 // 2025 monthly averages per category (from Excel Kalkyl Årsbasis)
 const BUDGET_2025={
   income:34140,
@@ -359,23 +359,23 @@ const BUDGET_2025={
   jag:9260, // fredrik 5177 + avbetalning 4083
   mat:5087,
 };
-
+ 
 const SEED=[{"id": 1, "type": "expense", "cat": "bostad", "desc": "Hyra + fasta boendekostnader", "amount": 12549, "ym": "2026-01"}, {"id": 2, "type": "expense", "cat": "bil", "desc": "Bil (f\u00f6rs\u00e4kring, parkering, underh\u00e5ll)", "amount": 1929, "ym": "2026-01"}, {"id": 4, "type": "expense", "cat": "jag", "desc": "Fredrik (n\u00f6jen, kl\u00e4der, gym, \u00f6vrigt)", "amount": 4873, "ym": "2026-01"}, {"id": 5, "type": "expense", "cat": "jag", "desc": "Avbetalningar (CSN, blancol\u00e5n)", "amount": 2478, "ym": "2026-01"}, {"id": 6, "type": "expense", "cat": "mat", "desc": "Mat och utemat", "amount": 3227, "ym": "2026-01"}, {"id": 7, "type": "saving", "cat": "spar_ovrigt", "desc": "Sparande jan", "amount": 1400, "ym": "2026-01"}, {"id": 8, "type": "income", "cat": "lon", "desc": "L\u00f6n", "amount": 26800, "ym": "2026-01"}, {"id": 9, "type": "income", "cat": "bidrag", "desc": "\u00d6verf\u00f6rt/bidrag", "amount": 3200, "ym": "2026-01"}, {"id": 10, "type": "income", "cat": "extra", "desc": "Extrainkomst", "amount": 4500, "ym": "2026-01"}, {"id": 11, "type": "expense", "cat": "bostad", "desc": "Hyra + fasta boendekostnader", "amount": 12849, "ym": "2026-02"}, {"id": 12, "type": "expense", "cat": "bil", "desc": "Bil (f\u00f6rs\u00e4kring, br\u00e4nsle, underh\u00e5ll)", "amount": 1697, "ym": "2026-02"}, {"id": 14, "type": "expense", "cat": "jag", "desc": "Fredrik (n\u00f6jen, gym, \u00f6vrigt)", "amount": 2503, "ym": "2026-02"}, {"id": 15, "type": "expense", "cat": "jag", "desc": "Avbetalningar", "amount": 2116, "ym": "2026-02"}, {"id": 16, "type": "expense", "cat": "mat", "desc": "Mat och utemat", "amount": 6591, "ym": "2026-02"}, {"id": 17, "type": "saving", "cat": "spar_buffert", "desc": "Sparande feb", "amount": 2400, "ym": "2026-02"}, {"id": 18, "type": "income", "cat": "lon", "desc": "L\u00f6n", "amount": 26400, "ym": "2026-02"}, {"id": 19, "type": "income", "cat": "bidrag", "desc": "\u00d6verf\u00f6rt/bidrag", "amount": 3200, "ym": "2026-02"}, {"id": 20, "type": "expense", "cat": "bostad", "desc": "Hyra + fasta boendekostnader", "amount": 12399, "ym": "2026-03"}, {"id": 21, "type": "expense", "cat": "bil", "desc": "Bil (stor service/d\u00e4ckbyte)", "amount": 6805, "ym": "2026-03"}, {"id": 23, "type": "expense", "cat": "jag", "desc": "Fredrik (n\u00f6jen, fris\u00f6r, kl\u00e4der, gym)", "amount": 5555, "ym": "2026-03"}, {"id": 24, "type": "expense", "cat": "jag", "desc": "Avbetalningar", "amount": 485, "ym": "2026-03"}, {"id": 25, "type": "expense", "cat": "mat", "desc": "Mat och utemat", "amount": 6213, "ym": "2026-03"}, {"id": 26, "type": "saving", "cat": "spar_barn", "desc": "Barnens sparande mars", "amount": 400, "ym": "2026-03"}, {"id": 27, "type": "income", "cat": "lon", "desc": "L\u00f6n", "amount": 25800, "ym": "2026-03"}, {"id": 28, "type": "income", "cat": "bidrag", "desc": "\u00d6verf\u00f6rt/bidrag", "amount": 3800, "ym": "2026-03"}, {"id": 29, "type": "income", "cat": "extra", "desc": "Extrainkomst", "amount": 2000, "ym": "2026-03"}, {"id": 30, "type": "expense", "cat": "bostad", "desc": "Hyra + fasta boendekostnader", "amount": 12729, "ym": "2026-04"}, {"id": 31, "type": "expense", "cat": "bil", "desc": "Bil (avbetalning, br\u00e4nsle, f\u00f6rs\u00e4kring)", "amount": 4762, "ym": "2026-04"}, {"id": 33, "type": "expense", "cat": "jag", "desc": "Fredrik (n\u00f6jen, gym, \u00f6vrigt)", "amount": 3864, "ym": "2026-04"}, {"id": 34, "type": "expense", "cat": "jag", "desc": "Avbetalningar", "amount": 478, "ym": "2026-04"}, {"id": 35, "type": "expense", "cat": "mat", "desc": "Mat och utemat", "amount": 5346, "ym": "2026-04"}, {"id": 36, "type": "saving", "cat": "spar_ovrigt", "desc": "Sparande april", "amount": 2400, "ym": "2026-04"}, {"id": 37, "type": "income", "cat": "lon", "desc": "L\u00f6n", "amount": 26700, "ym": "2026-04"}, {"id": 38, "type": "income", "cat": "bidrag", "desc": "Bidrag/\u00f6verf\u00f6rt", "amount": 3800, "ym": "2026-04"}, {"id": 39, "type": "income", "cat": "extra", "desc": "Extrainkomst", "amount": 13700, "ym": "2026-04"}, {"id": 40, "type": "expense", "cat": "bostad", "desc": "Hyra + fasta boendekostnader", "amount": 12615, "ym": "2026-05"}, {"id": 41, "type": "expense", "cat": "bil", "desc": "Bil (avbetalning, br\u00e4nsle, f\u00f6rs\u00e4kring, parkering)", "amount": 5550, "ym": "2026-05"}, {"id": 43, "type": "expense", "cat": "jag", "desc": "Fredrik (n\u00f6jen, kl\u00e4der, gym)", "amount": 5220, "ym": "2026-05"}, {"id": 44, "type": "expense", "cat": "jag", "desc": "Avbetalningar", "amount": 498, "ym": "2026-05"}, {"id": 45, "type": "expense", "cat": "mat", "desc": "Mat och utemat", "amount": 5238, "ym": "2026-05"}, {"id": 46, "type": "saving", "cat": "spar_ovrigt", "desc": "Sparande maj", "amount": 2400, "ym": "2026-05"}, {"id": 47, "type": "income", "cat": "lon", "desc": "L\u00f6n", "amount": 26800, "ym": "2026-05"}, {"id": 48, "type": "income", "cat": "bidrag", "desc": "\u00d6verf\u00f6rt/bidrag", "amount": 3800, "ym": "2026-05"}, {"id": 1781028182371, "type": "income", "cat": "lon", "desc": "L\u00f6n RF", "amount": 27000, "ym": "2026-06"}, {"id": 1781028193859, "type": "income", "cat": "extra", "desc": "Underh\u00e5ll", "amount": 1830, "ym": "2026-06"}, {"id": 1781028210186, "type": "saving", "cat": "spar_barn", "desc": "Juno och Nike", "amount": 400, "ym": "2026-06"}, {"id": 1781028228243, "type": "saving", "cat": "spar_ovrigt", "desc": "Nordnet", "amount": 1000, "ym": "2026-06"}, {"id": 1781030426796, "type": "expense", "cat": "barn", "desc": "Frita", "amount": 670, "ym": "2026-06"}, {"id": 1781030433733, "type": "expense", "cat": "jag", "desc": "Gym", "amount": 299, "ym": "2026-06"}, {"id": 1781030441553, "type": "expense", "cat": "bostad", "desc": "El", "amount": 580, "ym": "2026-06"}, {"id": 1781030447956, "type": "expense", "cat": "bostad", "desc": "Bredband", "amount": 570, "ym": "2026-06"}, {"id": 1781030455678, "type": "expense", "cat": "bostad", "desc": "Hemf\u00f6rs\u00e4kring", "amount": 230, "ym": "2026-06"}, {"id": 1781030463214, "type": "expense", "cat": "bostad", "desc": "Hyra", "amount": 10671, "ym": "2026-06"}, {"id": 1781030472253, "type": "expense", "cat": "bil", "desc": "Avbetalning", "amount": 2500, "ym": "2026-06"}, {"id": 1781030478291, "type": "expense", "cat": "bil", "desc": "Besiktning", "amount": 479, "ym": "2026-06"}, {"id": 1781030484827, "type": "expense", "cat": "bil", "desc": "Tv\u00e4tt", "amount": 55, "ym": "2026-06"}, {"id": 1781030498813, "type": "expense", "cat": "bil", "desc": "Parkering", "amount": 300, "ym": "2026-06"}, {"id": 1781030504834, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 107, "ym": "2026-06"}, {"id": 1781030515253, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 110, "ym": "2026-06"}, {"id": 1781030525638, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 50, "ym": "2026-06"}, {"id": 1781030530978, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 37, "ym": "2026-06"}, {"id": 1781030547295, "type": "expense", "cat": "barn", "desc": "Hallon", "amount": 109, "ym": "2026-06"}, {"id": 1781030555681, "type": "expense", "cat": "barn", "desc": "Nike Roblox", "amount": 65, "ym": "2026-06"}, {"id": 1781030566552, "type": "expense", "cat": "barn", "desc": "Juno veckopeng", "amount": 400, "ym": "2026-06"}, {"id": 1781030589070, "type": "expense", "cat": "jag", "desc": "Hud och h\u00e5rv\u00e5rd", "amount": 250, "ym": "2026-06"}, {"id": 1781030595292, "type": "expense", "cat": "jag", "desc": "Kaffe", "amount": 30, "ym": "2026-06"}, {"id": 1781030601113, "type": "expense", "cat": "jag", "desc": "Fika", "amount": 70, "ym": "2026-06"}, {"id": 1781030615733, "type": "expense", "cat": "bostad", "desc": "HBO", "amount": 80, "ym": "2026-06"}, {"id": 1781030772140, "type": "expense", "cat": "mat", "desc": "Frukt", "amount": 37, "ym": "2026-06"}, {"id": 1781030789616, "type": "expense", "cat": "jag", "desc": "Milkshake", "amount": 53, "ym": "2026-06"}, {"id": 1781030808266, "type": "expense", "cat": "mat", "desc": "Spicy Hot", "amount": 263, "ym": "2026-06"}, {"id": 1781030821937, "type": "expense", "cat": "mat", "desc": "Frukt", "amount": 20, "ym": "2026-06"}, {"id": 1781030835647, "type": "expense", "cat": "jag", "desc": "Fika", "amount": 20, "ym": "2026-06"}, {"id": 1781030853138, "type": "expense", "cat": "barn", "desc": "Presenter", "amount": 120, "ym": "2026-06"}, {"id": 1781030867557, "type": "expense", "cat": "jag", "desc": "Spel", "amount": 50, "ym": "2026-06"}, {"id": 1781030881077, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handla", "amount": 35, "ym": "2026-06"}, {"id": 1781030892484, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handla", "amount": 37, "ym": "2026-06"}, {"id": 1781030902235, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handla", "amount": 75, "ym": "2026-06"}, {"id": 1781030907860, "type": "expense", "cat": "mat", "desc": "Lunch", "amount": 78, "ym": "2026-06"}, {"id": 1781030921048, "type": "expense", "cat": "barn", "desc": "Bootcamp", "amount": 600, "ym": "2026-06"}, {"id": 1781030929155, "type": "expense", "cat": "barn", "desc": "Kakor", "amount": 200, "ym": "2026-06"}, {"id": 1781030951596, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handla", "amount": 82, "ym": "2026-06"}, {"id": 1781030967988, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 578, "ym": "2026-06"}, {"id": 1781030978108, "type": "expense", "cat": "jag", "desc": "Fackavgift", "amount": 280, "ym": "2026-06"}, {"id": 1781030985591, "type": "expense", "cat": "jag", "desc": "A-kassa", "amount": 140, "ym": "2026-06"}, {"id": 1781031009084, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 9, "ym": "2026-06"}, {"id": 1781031013817, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 95, "ym": "2026-06"}, {"id": 1781031041564, "type": "expense", "cat": "jag", "desc": "Spel", "amount": 25, "ym": "2026-06"}, {"id": 1781031056696, "type": "expense", "cat": "jag", "desc": "CSN", "amount": 478, "ym": "2026-06"}, {"id": 1781031103175, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handling", "amount": 90, "ym": "2026-06"}, {"id": 1781031117664, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 143, "ym": "2026-06"}, {"id": 1781031150102, "type": "expense", "cat": "mat", "desc": "Dejt med Vesa", "amount": 129, "ym": "2026-06"}, {"id": 1781031169774, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handling", "amount": 108, "ym": "2026-06"}, {"id": 1781069343439, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 338, "ym": "2026-06"}, {"id": 1781069686837, "type": "expense", "cat": "jag", "desc": "\u00c5rsavgift kort", "amount": 245, "ym": "2026-06"}, {"id": 1781069698360, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handla", "amount": 23, "ym": "2026-06"}, {"id": 1781069704944, "type": "expense", "cat": "jag", "desc": "Lunch", "amount": 73, "ym": "2026-06"}, {"id": 1781069725337, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 35, "ym": "2026-06"}, {"id": 1781069762168, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 137, "ym": "2026-06"}, {"id": 1781069948647, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 245, "ym": "2026-06"}, {"id": 1781069960902, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handling", "amount": 50, "ym": "2026-06"}, {"id": 1781069994487, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 93, "ym": "2026-06"}, {"id": 1781070030751, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handling", "amount": 50, "ym": "2026-06"}, {"id": 1781070044608, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handling", "amount": 35, "ym": "2026-06"}, {"id": 1781070051241, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 25, "ym": "2026-06"}, {"id": 1781084644269, "type": "expense", "cat": "barn", "desc": "Junos trosskydd", "amount": 55, "ym": "2026-06"}, {"id": 1781084656830, "type": "expense", "cat": "jag", "desc": "Lunch", "amount": 95, "ym": "2026-06"}, {"id": 1781094840565, "type": "expense", "cat": "barn", "desc": "Juno examen", "amount": 1500, "ym": "2026-06"}, {"id": 1781117499494, "type": "expense", "cat": "mat", "desc": "Sm\u00e5handla", "amount": 27, "ym": "2026-06"}, {"id": 1781156315549, "type": "income", "cat": "bidrag", "desc": "Barnbidrag", "amount": 1930, "ym": "2026-06"}, {"id": 1781175618069, "type": "expense", "cat": "barn", "desc": "Fika avslutning", "amount": 200, "ym": "2026-06"}, {"id": 1781193272813, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 615, "ym": "2026-06"}, {"id": 1781352931809, "type": "expense", "cat": "barn", "desc": "Presenter", "amount": 100, "ym": "2026-06"}, {"id": 1781361732000, "type": "expense", "cat": "jag", "desc": "Dricks", "amount": 17, "ym": "2026-06"}, {"id": 1781426734646, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 100, "ym": "2026-06"}, {"id": 1781467809977, "type": "expense", "cat": "bil", "desc": "Tv\u00e4tt", "amount": 130, "ym": "2026-06"}, {"id": 1781467872358, "type": "expense", "cat": "jag", "desc": "Fotbollsgodis", "amount": 54, "ym": "2026-06"}, {"id": 1781513258034, "type": "expense", "cat": "mat", "desc": "Frukost", "amount": 23, "ym": "2026-06"}, {"id": 1781526580415, "type": "expense", "cat": "jag", "desc": "Jennys medicin", "amount": 720, "ym": "2026-06"}, {"id": 1781534569290, "type": "expense", "cat": "bil", "desc": "F\u00f6rs\u00e4kring", "amount": 609, "ym": "2026-06"}, {"id": 1781534597176, "type": "expense", "cat": "bostad", "desc": "Apple One", "amount": 279, "ym": "2026-06"}, {"id": 1781543115001, "type": "expense", "cat": "bil", "desc": "Ladda", "amount": 137, "ym": "2026-06"}, {"id": 1781806710592, "type": "income", "cat": "bidrag", "desc": "\u00c5terbetalning", "amount": 1500, "ym": "2026-06"}, {"id": 1781806773779, "type": "expense", "cat": "jag", "desc": "Fotboll", "amount": 209, "ym": "2026-06"}, {"id": 1781806793612, "type": "expense", "cat": "jag", "desc": "Lunch och lite annat", "amount": 110, "ym": "2026-06"}, {"id": 1781806812326, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 369, "ym": "2026-06"}, {"id": 1781806835202, "type": "expense", "cat": "barn", "desc": "Mellis", "amount": 37, "ym": "2026-06"}, {"id": 1781863732453, "type": "expense", "cat": "mat", "desc": "Midsommar", "amount": 294, "ym": "2026-06"}, {"id": 1782049089399, "type": "expense", "cat": "jag", "desc": "Utg\u00e5ng", "amount": 1000, "ym": "2026-06"}, {"id": 1782049173062, "type": "expense", "cat": "jag", "desc": "Utg\u00e5ng", "amount": 300, "ym": "2026-06"}, {"id": 1782049206595, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 284, "ym": "2026-06"}, {"id": 1782049223438, "type": "expense", "cat": "jag", "desc": "L\u00e4sk", "amount": 50, "ym": "2026-06"}, {"id": 1782152364332, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 200, "ym": "2026-06"}, {"id": 1782239988230, "type": "expense", "cat": "jag", "desc": "Spel", "amount": 50, "ym": "2026-06"}, {"id": 1782239996367, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 500, "ym": "2026-06"}, {"id": 1782308309708, "type": "expense", "cat": "barn", "desc": "Glass", "amount": 50, "ym": "2026-06"}, {"id": 1782308316962, "type": "expense", "cat": "jag", "desc": "Glass", "amount": 45, "ym": "2026-06"}, {"id": 1782328314516, "type": "expense", "cat": "barn", "desc": "Minigolf", "amount": 45, "ym": "2026-06"}, {"id": 1782328330078, "type": "expense", "cat": "jag", "desc": "Minigolf", "amount": 45, "ym": "2026-06"}, {"id": 1782328337682, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 110, "ym": "2026-06"}, {"id": 1782328679436, "type": "income", "cat": "lon", "desc": "L\u00f6n", "amount": 27000, "ym": "2026-07"}, {"id": 1782328694145, "type": "income", "cat": "bidrag", "desc": "Underh\u00e5ll", "amount": 1830, "ym": "2026-07"}, {"id": 1782328730917, "type": "saving", "cat": "spar_barn", "desc": "Handelsbanken", "amount": 600, "ym": "2026-07"}, {"id": 1782328740923, "type": "saving", "cat": "spar_buffert", "desc": "Nordnet", "amount": 1000, "ym": "2026-07"}, {"id": 1782328754168, "type": "saving", "cat": "spar_ovrigt", "desc": "ISK", "amount": 1000, "ym": "2026-07"}, {"id": 1782382692699, "type": "expense", "cat": "barn", "desc": "Frita", "amount": 670, "ym": "2026-07"}, {"id": 1782382700578, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 90, "ym": "2026-07"}, {"id": 1782477259686, "type": "expense", "cat": "jag", "desc": "Kaffe", "amount": 34, "ym": "2026-07"}, {"id": 1782477269540, "type": "expense", "cat": "mat", "desc": "Lunch", "amount": 94, "ym": "2026-07"}, {"id": 1782477292612, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 40, "ym": "2026-07"}, {"id": 1782477301867, "type": "expense", "cat": "jag", "desc": "Gym", "amount": 299, "ym": "2026-07"}, {"id": 1782477342696, "type": "expense", "cat": "bostad", "desc": "El", "amount": 574, "ym": "2026-07"}, {"id": 1782477349051, "type": "expense", "cat": "bostad", "desc": "Hyra", "amount": 10671, "ym": "2026-07"}, {"id": 1782536599846, "type": "expense", "cat": "barn", "desc": "Juno veckopeng", "amount": 200, "ym": "2026-07"}, {"id": 1782536615585, "type": "expense", "cat": "barn", "desc": "Glass", "amount": 170, "ym": "2026-07"}, {"id": 1782587188834, "type": "expense", "cat": "mat", "desc": "Mellan", "amount": 139, "ym": "2026-06"}, {"id": 1782587215651, "type": "expense", "cat": "jag", "desc": "Spel", "amount": 30, "ym": "2026-06"}, {"id": 1782587286870, "type": "expense", "cat": "barn", "desc": "Godis", "amount": 10, "ym": "2026-07"}, {"id": 1782587296411, "type": "expense", "cat": "mat", "desc": "Mellanhandling", "amount": 140, "ym": "2026-07"}, {"id": 1782587302947, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 140, "ym": "2026-07"}, {"id": 1782587313197, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 150, "ym": "2026-07"}, {"id": 1782587359299, "type": "expense", "cat": "jag", "desc": "Frukost", "amount": 27, "ym": "2026-07"}, {"id": 1782666646057, "type": "expense", "cat": "jag", "desc": "Glass", "amount": 35, "ym": "2026-07"}, {"id": 1782675389910, "type": "expense", "cat": "barn", "desc": "L\u00e4sk", "amount": 24, "ym": "2026-07"}, {"id": 1782730776785, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 30, "ym": "2026-07"}, {"id": 1782762343559, "type": "expense", "cat": "jag", "desc": "Snacks", "amount": 35, "ym": "2026-07"}, {"id": 1782932014329, "type": "expense", "cat": "jag", "desc": "Kul", "amount": 286, "ym": "2026-07"}, {"id": 1782983090118, "type": "expense", "cat": "jag", "desc": "Quiz", "amount": 289, "ym": "2026-07"}, {"id": 1782983102976, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 89, "ym": "2026-07"}, {"id": 1782983112498, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 55, "ym": "2026-07"}, {"id": 1782983124991, "type": "expense", "cat": "barn", "desc": "Hallon", "amount": 109, "ym": "2026-07"}, {"id": 1782983141142, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 69, "ym": "2026-07"}, {"id": 1782983146111, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 89, "ym": "2026-07"}, {"id": 1782983164193, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 115, "ym": "2026-07"}, {"id": 1782983199025, "type": "expense", "cat": "bil", "desc": "Avbetalning", "amount": 2446, "ym": "2026-07"}, {"id": 1782983211636, "type": "expense", "cat": "jag", "desc": "CSN", "amount": 478, "ym": "2026-07"}, {"id": 1782983226463, "type": "expense", "cat": "jag", "desc": "Fack", "amount": 238, "ym": "2026-07"}, {"id": 1782983249048, "type": "expense", "cat": "bostad", "desc": "Hemf\u00f6rs\u00e4kring", "amount": 260, "ym": "2026-07"}, {"id": 1782983302340, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 10, "ym": "2026-07"}, {"id": 1782983367911, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 35, "ym": "2026-07"}, {"id": 1782983375003, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 30, "ym": "2026-07"}, {"id": 1782983389616, "type": "expense", "cat": "jag", "desc": "Liten", "amount": 70, "ym": "2026-07"}, {"id": 1782983418381, "type": "expense", "cat": "jag", "desc": "A-kassa", "amount": 160, "ym": "2026-07"}, {"id": 1782983438877, "type": "expense", "cat": "mat", "desc": "Mellan", "amount": 194, "ym": "2026-07"}, {"id": 1782983522520, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 240, "ym": "2026-07"}, {"id": 1782983537872, "type": "expense", "cat": "bil", "desc": "Parkering", "amount": 24, "ym": "2026-07"}, {"id": 1783076940993, "type": "expense", "cat": "mat", "desc": "Mellan", "amount": 181, "ym": "2026-07"}, {"id": 1783076947867, "type": "expense", "cat": "mat", "desc": "\u00c4gg", "amount": 36, "ym": "2026-07"}, {"id": 1783076985288, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 50, "ym": "2026-07"}, {"id": 1783673482017, "type": "expense", "cat": "barn", "desc": "F\u00f6delsedag", "amount": 425, "ym": "2026-07"}, {"id": 1783673492569, "type": "expense", "cat": "bil", "desc": "Reparation", "amount": 2917, "ym": "2026-07"}, {"id": 1783673642696, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 97, "ym": "2026-07"}, {"id": 1783673690207, "type": "expense", "cat": "utflykter", "desc": "Lkpg", "amount": 516, "ym": "2026-07"}, {"id": 1783673703461, "type": "expense", "cat": "utflykter", "desc": "Fika", "amount": 130, "ym": "2026-07"}, {"id": 1783673754919, "type": "expense", "cat": "jag", "desc": "Utg\u00e5ng", "amount": 630, "ym": "2026-07"}, {"id": 1783673879669, "type": "expense", "cat": "barn", "desc": "F\u00f6delsedag", "amount": 925, "ym": "2026-07"}, {"id": 1783673893146, "type": "expense", "cat": "jag", "desc": "Pizza", "amount": 125, "ym": "2026-07"}, {"id": 1783673911217, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 96, "ym": "2026-07"}, {"id": 1783673919899, "type": "expense", "cat": "utflykter", "desc": "Camping", "amount": 1630, "ym": "2026-07"}, {"id": 1783673952610, "type": "expense", "cat": "bil", "desc": "Parkering", "amount": 300, "ym": "2026-07"}, {"id": 1783673982331, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 178, "ym": "2026-07"}, {"id": 1783679104817, "type": "expense", "cat": "utflykter", "desc": "Camping", "amount": 1296, "ym": "2026-07"}, {"id": 1783692654190, "type": "expense", "cat": "utflykter", "desc": "Mat", "amount": 219, "ym": "2026-07"}, {"id": 1783694327279, "type": "expense", "cat": "mat", "desc": "Kaffe", "amount": 65, "ym": "2026-07"}, {"id": 1783701096526, "type": "income", "cat": "bidrag", "desc": "Barnbidrag", "amount": 1250, "ym": "2026-07"}, {"id": 1783843066900, "type": "expense", "cat": "utflykter", "desc": "Birger king", "amount": 368, "ym": "2026-07"}, {"id": 1783843084443, "type": "expense", "cat": "utflykter", "desc": "Camping pizza", "amount": 268, "ym": "2026-07"}, {"id": 1783843153063, "type": "expense", "cat": "utflykter", "desc": "Kaffe", "amount": 20, "ym": "2026-07"}, {"id": 1783843158129, "type": "expense", "cat": "utflykter", "desc": "Dricka", "amount": 29, "ym": "2026-07"}, {"id": 1783843163830, "type": "expense", "cat": "utflykter", "desc": "Dricka", "amount": 58, "ym": "2026-07"}, {"id": 1783845375145, "type": "expense", "cat": "bil", "desc": "Laddning", "amount": 105, "ym": "2026-07"}, {"id": 1783845405769, "type": "expense", "cat": "utflykter", "desc": "Laddning bil", "amount": 130, "ym": "2026-07"}, {"id": 1783846193501, "type": "expense", "cat": "barn", "desc": "Pinchos", "amount": 444, "ym": "2026-07"}, {"id": 1783846204955, "type": "expense", "cat": "jag", "desc": "Pinchos", "amount": 444, "ym": "2026-07"}, {"id": 1783873033219, "type": "expense", "cat": "utflykter", "desc": "Glass", "amount": 168, "ym": "2026-07"}, {"id": 1783873074527, "type": "expense", "cat": "utflykter", "desc": "Handling", "amount": 300, "ym": "2026-07"}, {"id": 1783964198212, "type": "expense", "cat": "utflykter", "desc": "Pizza", "amount": 452, "ym": "2026-07"}, {"id": 1783964206602, "type": "expense", "cat": "utflykter", "desc": "Glass", "amount": 195, "ym": "2026-07"}, {"id": 1784024188666, "type": "expense", "cat": "utflykter", "desc": "Parkering.", "amount": 45, "ym": "2026-07"}, {"id": 1784024207181, "type": "expense", "cat": "barn", "desc": "Solfj\u00e4drwr", "amount": 198, "ym": "2026-07"}, {"id": 1784024226039, "type": "expense", "cat": "utflykter", "desc": "Picknick", "amount": 185, "ym": "2026-07"}, {"id": 1784033773635, "type": "expense", "cat": "utflykter", "desc": "Tropkarium", "amount": 575, "ym": "2026-07"}, {"id": 1784033781641, "type": "expense", "cat": "utflykter", "desc": "Mat", "amount": 375, "ym": "2026-07"}, {"id": 1784033787577, "type": "expense", "cat": "utflykter", "desc": "Laddning", "amount": 200, "ym": "2026-07"}, {"id": 1784041613723, "type": "expense", "cat": "utflykter", "desc": "Godis", "amount": 100, "ym": "2026-07"}, {"id": 1784041619582, "type": "expense", "cat": "utflykter", "desc": "Fika", "amount": 100, "ym": "2026-07"}, {"id": 1784120294220, "type": "expense", "cat": "bil", "desc": "St\u00e4dning", "amount": 220, "ym": "2026-07"}, {"id": 1784120316954, "type": "expense", "cat": "barn", "desc": "Fuzzy drink", "amount": 42, "ym": "2026-07"}, {"id": 1784120324576, "type": "expense", "cat": "jag", "desc": "Milkshake", "amount": 53, "ym": "2026-07"}, {"id": 1784120355860, "type": "expense", "cat": "utflykter", "desc": "Laddning", "amount": 250, "ym": "2026-07"}, {"id": 1784130532598, "type": "expense", "cat": "bil", "desc": "F\u00f6rs\u00e4kring", "amount": 610, "ym": "2026-07"}, {"id": 1784273427701, "type": "expense", "cat": "mat", "desc": "Mellan", "amount": 242, "ym": "2026-07"}, {"id": 1784273442112, "type": "expense", "cat": "mat", "desc": "Liten", "amount": 75, "ym": "2026-07"}, {"id": 1784273467392, "type": "expense", "cat": "mat", "desc": "Mellan", "amount": 130, "ym": "2026-07"}, {"id": 1784361355864, "type": "income", "cat": "extra", "desc": "Bio", "amount": 350, "ym": "2026-07"}, {"id": 1784391453931, "type": "expense", "cat": "jag", "desc": "Fika", "amount": 162, "ym": "2026-07"}, {"id": 1784391598301, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 90, "ym": "2026-07"}, {"id": 1784461184047, "type": "expense", "cat": "jag", "desc": "Jennys parkering", "amount": 80, "ym": "2026-07"}, {"id": 1784461238469, "type": "expense", "cat": "barn", "desc": "Junos bassie", "amount": 232, "ym": "2026-07"}, {"id": 1784461304056, "type": "expense", "cat": "jag", "desc": "Utg\u00e5ng", "amount": 200, "ym": "2026-07"}, {"id": 1784461365584, "type": "expense", "cat": "jag", "desc": "Snacks", "amount": 150, "ym": "2026-07"}, {"id": 1784461437444, "type": "expense", "cat": "utflykter", "desc": "N\u00f6rcon", "amount": 600, "ym": "2026-07"}, {"id": 1784472164483, "type": "expense", "cat": "mat", "desc": "Pizza", "amount": 140, "ym": "2026-07"}, {"id": 1784472171782, "type": "expense", "cat": "jag", "desc": "Godis", "amount": 35, "ym": "2026-07"}, {"id": 1784615766326, "type": "expense", "cat": "utflykter", "desc": "Utflykt", "amount": 201, "ym": "2026-01"}, {"id": 1784615789278, "type": "expense", "cat": "barn", "desc": "Allm\u00e4nt", "amount": 6100, "ym": "2026-01"}, {"id": 1784615833871, "type": "expense", "cat": "barn", "desc": "Barn", "amount": 2921, "ym": "2026-02"}, {"id": 1784615840693, "type": "expense", "cat": "utflykter", "desc": "Utflykt", "amount": 200, "ym": "2026-02"}, {"id": 1784615883637, "type": "expense", "cat": "utflykter", "desc": "Utflykt", "amount": 589, "ym": "2026-03"}, {"id": 1784615908139, "type": "expense", "cat": "barn", "desc": "Barn", "amount": 2419, "ym": "2026-03"}, {"id": 1784615946465, "type": "expense", "cat": "utflykter", "desc": "Utflykter", "amount": 1049, "ym": "2026-04"}, {"id": 1784615968392, "type": "expense", "cat": "barn", "desc": "Barn", "amount": 6000, "ym": "2026-04"}, {"id": 1784615998063, "type": "expense", "cat": "utflykter", "desc": "Utflykter", "amount": 3041, "ym": "2026-05"}, {"id": 1784616023191, "type": "expense", "cat": "barn", "desc": "Allm\u00e4nt", "amount": 6800, "ym": "2026-05"}, {"id": 1784616085772, "type": "expense", "cat": "utflykter", "desc": "Bio", "amount": 540, "ym": "2026-06"}, {"id": 1784657820335, "type": "expense", "cat": "mat", "desc": "Mellan", "amount": 107, "ym": "2026-07"}, {"id": 1784722493681, "type": "expense", "cat": "barn", "desc": "Id kort", "amount": 400, "ym": "2026-07"}, {"id": 1784738385612, "type": "expense", "cat": "jag", "desc": "\u00d6l", "amount": 95, "ym": "2026-07"}];
-
+ 
 const SEED_WEALTH={"nordnet": 7650, "buffert": 0, "hb": 12800, "bil": 195000, "oa": 0, "csn": 2000, "blanco": 57500, "restvarde": 124000, "kk": 16000, "od": 0};
 const SEED_SNAPS=[{"ym": "2026-01", "assets": 19058, "debts": 19900, "net": -842, "detail": {"nordnet": 5858, "buffert": 2000, "hb": 11200, "bil": 0, "oa": 0, "csn": 5500, "blanco": 3400, "restvarde": 0, "kk": 11000, "od": 0}}, {"ym": "2026-02", "assets": 16514, "debts": 11690, "net": 4824, "detail": {"nordnet": 3674, "buffert": 1000, "hb": 11840, "bil": 0, "oa": 0, "csn": 5000, "blanco": 1690, "restvarde": 0, "kk": 5000, "od": 0}}, {"ym": "2026-03", "assets": 16400, "debts": 12000, "net": 4400, "detail": {"nordnet": 3700, "buffert": 0, "hb": 12700, "bil": 0, "oa": 0, "csn": 4500, "blanco": 0, "restvarde": 0, "kk": 7500, "od": 0}}, {"ym": "2026-04", "assets": 22778, "debts": 10800, "net": 11978, "detail": {"nordnet": 7650, "buffert": 3000, "hb": 12128, "bil": 0, "oa": 0, "csn": 4000, "blanco": 0, "restvarde": 0, "kk": 6800, "od": 0}}, {"ym": "2026-05", "assets": 222778, "debts": 196800, "net": 25978, "detail": {"nordnet": 7650, "buffert": 3000, "hb": 12128, "bil": 200000, "oa": 0, "csn": 4000, "blanco": 60000, "restvarde": 126000, "kk": 6800, "od": 0}}, {"ym": "2026-06", "assets": 222778, "debts": 195300, "net": 27478, "detail": {"nordnet": 7650, "buffert": 3000, "hb": 12128, "bil": 200000, "oa": 0, "csn": 4000, "blanco": 59000, "restvarde": 125500, "kk": 6800, "od": 0}}, {"ym": "2026-07", "assets": 222778, "debts": 192500, "net": 30278, "detail": {"nordnet": 7650, "buffert": 3000, "hb": 12128, "bil": 200000, "oa": 0, "csn": 2500, "blanco": 58300, "restvarde": 124900, "kk": 6800, "od": 0}}, {"ym": "2026-08", "assets": 192110, "debts": 181100, "net": 11010, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 192110, "oa": 0, "csn": 2000, "blanco": 179100, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-09", "assets": 189480, "debts": 178300, "net": 11180, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 189480, "oa": 0, "csn": 1500, "blanco": 176800, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-10", "assets": 186850, "debts": 175500, "net": 11350, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 186850, "oa": 0, "csn": 1000, "blanco": 174500, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-11", "assets": 184220, "debts": 172700, "net": 11520, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 184220, "oa": 0, "csn": 500, "blanco": 172200, "restvarde": 0, "kk": 0, "od": 0}}];
 let st={txns:[...SEED],wealth:{...SEED_WEALTH},snapshots:[{"ym": "2026-01", "assets": 19058, "debts": 19900, "net": -842, "detail": {"nordnet": 5858, "buffert": 2000, "hb": 11200, "bil": 0, "oa": 0, "csn": 5500, "blanco": 3400, "restvarde": 0, "kk": 11000, "od": 0}}, {"ym": "2026-02", "assets": 16514, "debts": 11690, "net": 4824, "detail": {"nordnet": 3674, "buffert": 1000, "hb": 11840, "bil": 0, "oa": 0, "csn": 5000, "blanco": 1690, "restvarde": 0, "kk": 5000, "od": 0}}, {"ym": "2026-03", "assets": 16400, "debts": 12000, "net": 4400, "detail": {"nordnet": 3700, "buffert": 0, "hb": 12700, "bil": 0, "oa": 0, "csn": 4500, "blanco": 0, "restvarde": 0, "kk": 7500, "od": 0}}, {"ym": "2026-04", "assets": 21976, "debts": 11000, "net": 10976, "detail": {"nordnet": 5400, "buffert": 2000, "hb": 14576, "bil": 0, "oa": 0, "csn": 4000, "blanco": 0, "restvarde": 0, "kk": 7000, "od": 0}}, {"ym": "2026-05", "assets": 200000, "debts": 189500, "net": 10500, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 200000, "oa": 0, "csn": 3500, "blanco": 186000, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-06", "assets": 197370, "debts": 186700, "net": 10670, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 197370, "oa": 0, "csn": 3000, "blanco": 183700, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-07", "assets": 194740, "debts": 183900, "net": 10840, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 194740, "oa": 0, "csn": 2500, "blanco": 181400, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-08", "assets": 192110, "debts": 181100, "net": 11010, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 192110, "oa": 0, "csn": 2000, "blanco": 179100, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-09", "assets": 189480, "debts": 178300, "net": 11180, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 189480, "oa": 0, "csn": 1500, "blanco": 176800, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-10", "assets": 186850, "debts": 175500, "net": 11350, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 186850, "oa": 0, "csn": 1000, "blanco": 174500, "restvarde": 0, "kk": 0, "od": 0}}, {"ym": "2026-11", "assets": 184220, "debts": 172700, "net": 11520, "detail": {"nordnet": 0, "buffert": 0, "hb": 0, "bil": 184220, "oa": 0, "csn": 500, "blanco": 172200, "restvarde": 0, "kk": 0, "od": 0}}],selCat:null,entryType:'expense',filterCat:'all',isFixed:false};
 let vYM='2026-05';
 let vYMview='2026-05';
 let chartInst=null;
-
+ 
 // GitHub sync config
-const GH_TOKEN='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';
+const GH_TOKEN='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';
 const GH_REPO='fresu431-droid/Sumpan';
 const GH_FILE='data.json';
 const GH_API=`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
 let ghSHA=null; // tracks current file SHA for updates
-
+ 
 async function ghLoad(){
   try{
     const r=await fetch(GH_API,{headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'},cache:'no-store'});
@@ -395,7 +395,7 @@ async function ghLoad(){
     return false;
   }catch(e){console.error('ghLoad failed:',e);return false;}
 }
-
+ 
 async function ghSave(){
   try{
     const body={message:'Uppdatera ekonomidata',content:btoa(unescape(encodeURIComponent(JSON.stringify(st))))};
@@ -405,7 +405,7 @@ async function ghSave(){
     else{console.warn('ghSave: HTTP error',r.status,await r.text());}
   }catch(e){console.warn('GitHub save failed',e);}
 }
-
+ 
 // Debounced save — waits 2s after last change before pushing to GitHub
 let ghSaveTimer=null;
 function save(){
@@ -413,16 +413,16 @@ function save(){
   clearTimeout(ghSaveTimer);
   ghSaveTimer=setTimeout(()=>{ghSave();},2000);
 }
-
+ 
 // localStorage used only as offline fallback — GitHub always wins when online
 // save() defined above with GitHub sync
-
+ 
 const fn=n=>Math.round(n).toLocaleString('sv-SE');
 const vn=x=>parseFloat(x)||0;
 function allCats(){return[...INC_CATS,...EXP_CATS,...SAV_CATS];}
 function catById(id){return allCats().find(c=>c.id===id)||EXP_CATS[0];}
 function catsForType(t){return t==='income'?INC_CATS:t==='saving'?SAV_CATS:EXP_CATS;}
-
+ 
 // Compute rolling budget: blend 2025 actuals + 2026 actuals, average over months with data
 // 2025 monthly actuals per category (from Excel) — used to fill in months before 2026 data
 const DATA_2025={
@@ -449,7 +449,7 @@ const YEAR_2025={
   saving:5120,
   consumption:198240, // = sum(summaUtgifter), kept for reference
 };
-
+ 
 function getRollingBudget(ym){
   // Build the 12 months before ym
   const[y,m]=ym.split('-').map(Number);
@@ -459,7 +459,7 @@ function getRollingBudget(ym){
     if(mm<=0){mm+=12;yy--;}
     window12.push(yy+'-'+String(mm).padStart(2,'0'));
   }
-
+ 
   const budget={};
   EXP_CATS.forEach(c=>{
     const vals=window12.map(mo=>{
@@ -471,10 +471,10 @@ function getRollingBudget(ym){
       if(moy===2025&&DATA_2025[c.id]) return DATA_2025[c.id][mom-1]||0;
       return null; // unknown month — skip
     }).filter(v=>v!==null);
-
+ 
     budget[c.id]=vals.length>0 ? vals.reduce((a,b)=>a+b,0)/vals.length : BUDGET_2025[c.id]||0;
   });
-
+ 
   // income
   const incVals=window12.map(mo=>{
     const appData=st.txns.filter(t=>t.ym===mo&&t.type==='income');
@@ -484,16 +484,16 @@ function getRollingBudget(ym){
     return null;
   }).filter(v=>v!==null);
   budget.income=incVals.length>0?incVals.reduce((a,b)=>a+b,0)/incVals.length:BUDGET_2025.income;
-
+ 
   return budget;
 }
-
+ 
 // Find last month that has any data
 function lastDataMonth(){
   const months=[...new Set(st.txns.map(t=>t.ym))].sort();
   return months.length>0?months[months.length-1]:null;
 }
-
+ 
 // Rolling 12m average for saving
 function window12avg_sav(ym){
   const[y,m]=ym.split('-').map(Number);
@@ -514,7 +514,7 @@ function window12avg_sav(ym){
   }).filter(v=>v!==null);
   return vals.length>0?vals.reduce((a,b)=>a+b,0)/vals.length:0;
 }
-
+ 
 function buildMonthSelect(){
   const sel=document.getElementById('monthSelect');
   const opts=[];
@@ -539,7 +539,7 @@ function shiftMonthView(d){
   if(nm<0){nm=11;ny--;}else if(nm>11){nm=0;ny++;}
   vYMview=ny+'-'+String(nm+1).padStart(2,'0');buildMonthViewSelect();renderMonthOverview();
 }
-
+ 
 function setType(t,btn){
   st.entryType=t;st.selCat=null;
   document.querySelectorAll('.tt').forEach(b=>{b.style.borderColor='';b.style.color='';b.classList.remove('on');});
@@ -551,7 +551,7 @@ function setType(t,btn){
   if(wrap)wrap.style.display=t==='expense'?'block':'none';
   renderChips();checkBtn();
 }
-
+ 
 function setFixed(isFixed,btn){
   st.isFixed=isFixed;
   document.querySelectorAll('#tt-fixed,#tt-variable').forEach(b=>{b.style.borderColor='';b.style.color='';b.classList.remove('on');});
@@ -559,14 +559,14 @@ function setFixed(isFixed,btn){
   if(isFixed){btn.style.borderColor='#185FA5';btn.style.color='#185FA5';}
   else{btn.style.borderColor='#888';btn.style.color='#888';}
 }
-
+ 
 function renderChips(){
   document.getElementById('chips').innerHTML=catsForType(st.entryType).map(c=>`
     <button class="chip${st.selCat===c.id?' sel':''}" style="${st.selCat===c.id?'background:'+c.color+';border-color:'+c.color:''}" onclick="selCat('${c.id}')">${c.label}</button>`).join('');
 }
 function selCat(id){st.selCat=(st.selCat===id?null:id);renderChips();checkBtn();}
 function checkBtn(){document.getElementById('addBtn').disabled=!(st.selCat&&vn(document.getElementById('amount').value)>0);}
-
+ 
 function addTxn(){
   const desc=document.getElementById('desc').value.trim();
   const amount=vn(document.getElementById('amount').value);
@@ -580,7 +580,7 @@ function addTxn(){
   renderLog();
 }
 function delTxn(id){if(!confirm('Ta bort posten?'))return;st.txns=st.txns.filter(t=>t.id!==id);save();renderLog();}
-
+ 
 function renderLog(){
   const[y,m]=vYM.split('-').map(Number);
   document.getElementById('logTitle').textContent=MONTHS[m-1]+' '+y;
@@ -624,7 +624,7 @@ function renderLog(){
   }).join('');
 }
 function setF(f){st.filterCat=f;renderLog();}
-
+ 
 // ---- MÅNADSÖVERSIKT ----
 function renderMonthOverview(){
   const ym=vYMview;
@@ -637,16 +637,16 @@ function renderMonthOverview(){
   const sparkvot=inc>0?((sav/inc)*100):0;
   const expFixed=all.filter(t=>t.type==='expense'&&t.fixed===true).reduce((s,t)=>s+t.amount,0);
   const expVar=all.filter(t=>t.type==='expense'&&t.fixed!==true).reduce((s,t)=>s+t.amount,0);
-
+ 
   const budget=getRollingBudget(ym);
   const budgetSav=window12avg_sav(ym);
-
+ 
   // % vs 12m average
   const incVsAvg=budget.income>0?((inc/budget.income)*100).toFixed(0):null;
   const expTotal=EXP_CATS.reduce((s,c)=>s+(budget[c.id]||0),0);
   const expVsAvg=expTotal>0?((exp/expTotal)*100).toFixed(0):null;
   const savVsAvg=budgetSav>0?((sav/budgetSav)*100).toFixed(0):null;
-
+ 
   function vsLabel(pct,higherIsBetter){
     if(!pct)return'<span style="color:#aaa">—</span>';
     const n=parseInt(pct);
@@ -655,14 +655,14 @@ function renderMonthOverview(){
     const sign=n>=100?'+':'';
     return '<span style="color:'+color+';font-weight:600">'+sign+(n-100)+'%</span>';
   }
-
+ 
   // Sparkvot ring
   const sparkvot2=inc>0?((sav/inc)*100):0;
   const pct=Math.min(Math.max(sparkvot2,0),100);
   const r=26,circ=2*Math.PI*r;
   const dash=circ*(pct/100);
   const ringColor=sparkvot2>=10?'#3B6D11':sparkvot2>=0?'#639922':'#A32D2D';
-
+ 
   let html=`
     <div class="mo-hero">
       <div class="mo-hero-label">${MONTHS[m-1]} ${y}</div>
@@ -721,7 +721,7 @@ function renderMonthOverview(){
     </div>
     <div class="card">
       <div class="sec-title">Jämfört med snitt (2025 + 2026)</div>`;
-
+ 
   EXP_CATS.forEach(c=>{
     const actual=all.filter(t=>t.type==='expense'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0);
     const bud=Math.round(budget[c.id]||BUDGET_2025[c.id]||0);
@@ -743,11 +743,11 @@ function renderMonthOverview(){
         </div>
       </div>`;
   });
-
+ 
   html+=`</div>`;
   document.getElementById('monthOverview').innerHTML=html;
 }
-
+ 
 // ---- ÅRSVY ----
 function renderYear(){
   const yr=2026;
@@ -757,11 +757,11 @@ function renderYear(){
   const tS=allY.filter(t=>t.type==='saving').reduce((s,t)=>s+t.amount,0);
   const tFixed=allY.filter(t=>t.type==='expense'&&t.fixed===true).reduce((s,t)=>s+t.amount,0);
   const tVar=allY.filter(t=>t.type==='expense'&&t.fixed!==true).reduce((s,t)=>s+t.amount,0);
-
+ 
   // Find exact set of 2026 calendar months that actually have data
   const monthsUsed=[...new Set(allY.map(t=>t.ym))].sort(); // e.g. ['2026-01',...,'2026-05']
   const moWith=monthsUsed.length||1;
-
+ 
   // Sum 2025 actuals for THE SAME calendar months (not a proportional scale of the year total)
   function sum2025(catArr){
     return monthsUsed.reduce((s,ym)=>{
@@ -783,14 +783,14 @@ function renderYear(){
     const mIdx=parseInt(ym.split('-')[1],10)-1;
     return s+(SAV_2025_BY_MONTH[mIdx]||0);
   },0));
-
+ 
   function vsY(cur,prev){
     if(!prev)return'';
     const d=Math.round(((cur-prev)/Math.abs(prev))*100);
     const col=d>=0?'#3B6D11':'#A32D2D';
     return `<span style="font-size:10px;color:${col};font-weight:600">${d>=0?'+':''}${d}% vs 2025</span>`;
   }
-
+ 
   document.getElementById('ymetrics').innerHTML=`
     <div class="metric" style="grid-column:span 4">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
@@ -829,7 +829,7 @@ function renderYear(){
         </div>
       </div>
     </div>`;
-
+ 
   const mI=[...Array(12)].map((_,i)=>{const p=yr+'-'+String(i+1).padStart(2,'0');return allY.filter(t=>t.ym===p&&t.type==='income').reduce((s,t)=>s+t.amount,0)||null;});
   const mE=[...Array(12)].map((_,i)=>{const p=yr+'-'+String(i+1).padStart(2,'0');return allY.filter(t=>t.ym===p&&t.type==='expense').reduce((s,t)=>s+t.amount,0)||null;});
   const mS=[...Array(12)].map((_,i)=>{const p=yr+'-'+String(i+1).padStart(2,'0');return allY.filter(t=>t.ym===p&&t.type==='saving').reduce((s,t)=>s+t.amount,0)||null;});
@@ -839,7 +839,7 @@ function renderYear(){
     {label:'Konsumtion',data:mE,backgroundColor:'#85B7EB77',borderColor:'#185FA5',borderWidth:1},
     {label:'Sparande',data:mS,backgroundColor:'#B5D4F477',borderColor:'#534AB7',borderWidth:1},
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{autoSkip:false,font:{size:9}}},y:{ticks:{callback:n=>fn(n),font:{size:9}}}}}});
-
+ 
   // Category bars with % of total and vs 2025 (same calendar months, not scaled)
   const catData=EXP_CATS.map(c=>({c,tot:allY.filter(t=>t.type==='expense'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0)})).filter(x=>x.tot>0).sort((a,b)=>b.tot-a.tot);
   const totalCat=catData.reduce((s,x)=>s+x.tot,0)||1;
@@ -856,17 +856,17 @@ function renderYear(){
       <div class="bar-track"><div class="bar-fill" style="width:${Math.round(x.tot/mx*100)}%;background:${x.c.color}"></div></div>
       <div style="flex:0 0 120px;text-align:right;font-size:11px;color:#888;white-space:nowrap">${fn(x.tot)} · <strong>${pct}%</strong> ${vsStr}</div>
     </div>`;}).join(''):'<div class="empty">Inga poster</div>';
-
+ 
   const savData=SAV_CATS.map(c=>({c,tot:allY.filter(t=>t.type==='saving'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0)})).filter(x=>x.tot>0).sort((a,b)=>b.tot-a.tot);
   const mxS=savData.length?savData[0].tot:1;
   document.getElementById('savbars').innerHTML=savData.length?savData.map(x=>`
     <div class="bar-row"><div class="bar-label">${x.c.label}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(x.tot/mxS*100)}%;background:${x.c.color}"></div></div><div class="bar-val">${fn(x.tot)} kr</div></div>`).join(''):'<div class="empty">Inga poster</div>';
 }
-
+ 
 // ---- FÖRMÖGENHET ----
 let wealthChartInst=null;
 let snapYM='2026-06'; // default to current month
-
+ 
 function onWealthInput(){
   // Read inputs and update current snapshot data (not global wealth)
   const w={};
@@ -885,7 +885,7 @@ function onWealthInput(){
   const lastSnap=st.snapshots&&st.snapshots.length?st.snapshots.filter(s=>s.ym<=snapYM).slice(-1)[0]:null;
   if(!lastSnap||snapYM>=lastSnap.ym) st.wealth=w;
 }
-
+ 
 function renderWMetrics(){
   // Load snapshot for current snapYM if exists, else use global wealth
   const snap=st.snapshots&&st.snapshots.find(s=>s.ym===snapYM);
@@ -900,7 +900,7 @@ function renderWMetrics(){
   renderWealthChart();
   renderPriorityList();
 }
-
+ 
 function loadWInputs(){
   // Load snapshot values for selected month, or global wealth if no snapshot
   const snap=st.snapshots&&st.snapshots.find(s=>s.ym===snapYM);
@@ -927,7 +927,7 @@ function loadWInputs(){
   }
   buildSnapMonthSelect();
 }
-
+ 
 function buildSnapMonthSelect(){
   const sel=document.getElementById('snapMonthSelect');
   if(!sel)return;
@@ -939,13 +939,13 @@ function buildSnapMonthSelect(){
   }}
   sel.innerHTML=opts.join('');
 }
-
+ 
 function onSnapMonthChange(){
   snapYM=document.getElementById('snapMonthSelect').value;
   loadWInputs();
   renderWMetrics();
 }
-
+ 
 function shiftSnapMonth(d){
   const[y,m]=snapYM.split('-').map(Number);let nm=m-1+d,ny=y;
   if(nm<0){nm=11;ny--;}else if(nm>11){nm=0;ny++;}
@@ -954,7 +954,7 @@ function shiftSnapMonth(d){
   loadWInputs();
   renderWMetrics();
 }
-
+ 
 function saveSnapshot(){
   const w={};
   ['nordnet','buffert','hb','bil','oa','csn','blanco','restvarde','kk','od'].forEach(k=>{
@@ -979,13 +979,13 @@ function saveSnapshot(){
   loadWInputs();
   renderWMetrics();
 }
-
+ 
 function renderPriorityList(){
   const w=st.wealth||{};
   const rNordnet=vn(document.getElementById('proj_rate_nordnet')?.value||7);
   const rBuffert=vn(document.getElementById('proj_rate_buffert')?.value||1.5);
   const rHB=vn(document.getElementById('proj_rate_hb')?.value||7);
-
+ 
   // Build list of all posts with name, amount, rate, type
   const posts=[
     // Skulder (negativ avkastning = räntekostnad)
@@ -999,19 +999,19 @@ function renderPriorityList(){
     {name:'Nordnet buffert',amount:w.buffert||0,rate:rBuffert,type:'asset'},
     {name:'Handelsbanken (barn)',amount:w.hb||0,rate:rHB,type:'asset'},
   ].filter(p=>p.amount>0);
-
+ 
   // Sort: debts by rate desc (pay highest first), assets by rate desc (save to best last)
   const debts=posts.filter(p=>p.type==='debt'&&p.rate>0).sort((a,b)=>b.rate-a.rate);
   const freeDebt=posts.filter(p=>p.type==='debt'&&p.rate===0);
   const assets=posts.filter(p=>p.type==='asset').sort((a,b)=>b.rate-a.rate);
-
+ 
   // Build ranked list combining debts first then assets
   const ranked=[...debts,...freeDebt,...assets];
-
+ 
   const el=document.getElementById('priorityList');
   if(!el)return;
   if(!ranked.length){el.innerHTML='<p style="font-size:12px;color:#aaa">Fyll i förmögenhetsvärden för att se prioriteringsordning.</p>';return;}
-
+ 
   el.innerHTML=ranked.map((p,i)=>{
     const isDebt=p.type==='debt';
     const color=isDebt?'#A32D2D':'#3B6D11';
@@ -1028,7 +1028,7 @@ function renderPriorityList(){
       <span style="font-size:13px;font-weight:700;color:${color}">${p.rate}%</span>
     </div>`;
   }).join('');
-
+ 
   // Advice: compare highest debt rate vs lowest asset rate
   const advEl=document.getElementById('priorityAdvice');
   if(!advEl)return;
@@ -1052,19 +1052,19 @@ function renderPriorityList(){
     advEl.innerHTML=`<strong>Inga skulder — spara i ${assets[0].name} (${assets[0].rate}%)</strong><br>Inga lån att betala av. Fortsätt bygga ditt sparkapital.`;
   }
 }
-
+ 
 function renderWealthChart(){
   const snaps=st.snapshots||[];
   const card=document.getElementById('wealthChartCard');
   if(!card)return;
   if(snaps.length<1){card.style.display='none';return;}
   card.style.display='block';
-
+ 
   const labels=snaps.map(s=>{const[y,m]=s.ym.split('-').map(Number);return MS[m-1]+' '+String(y).slice(2);});
   const dA=snaps.map(s=>s.assets);
   const dD=snaps.map(s=>s.debts);
   const dN=snaps.map(s=>s.net);
-
+ 
   if(wealthChartInst){wealthChartInst.destroy();wealthChartInst=null;}
   wealthChartInst=new Chart(document.getElementById('wealthChart'),{
     type:'line',
@@ -1075,7 +1075,7 @@ function renderWealthChart(){
     ]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}}},y:{ticks:{callback:n=>fn(n),font:{size:9}}}}}
   });
-
+ 
   // Snapshot list
   const list=document.getElementById('snapshotList');
   list.innerHTML=`<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.3px;margin-bottom:.5rem">Sparade snapshots</div>`+
@@ -1087,16 +1087,16 @@ function renderWealthChart(){
         <button onclick="deleteSnapshot('${s.ym}')" style="background:none;border:none;cursor:pointer;color:#ddd;font-size:14px">×</button>
       </div>`;}).join('');
 }
-
+ 
 function deleteSnapshot(ym){
   if(!confirm('Ta bort snapshot?'))return;
   st.snapshots=st.snapshots.filter(s=>s.ym!==ym);
   save();renderWealthChart();
 }
-
+ 
 // ---- WEALTH PROJECTION (per-account, based on real trend) ----
 let calcChartInst=null;
-
+ 
 // Get average monthly saving by destination category over last 12 months (real data)
 function getSavingTrendByDest(){
   // Use the last 12 months of actual saving data
@@ -1107,7 +1107,7 @@ function getSavingTrendByDest(){
   for(let i=0;i<12;i++){let mm=m-i,yy=y;if(mm<=0){mm+=12;yy--;}window12.push(yy+'-'+String(mm).padStart(2,'0'));}
   const monthsWithData=new Set(st.txns.map(t=>t.ym)).size;
   const divisor=Math.max(1,Math.min(12,monthsWithData));
-
+ 
   const result={spar_buffert:0,spar_barn:0,spar_ovrigt:0};
   SAV_CATS.forEach(c=>{
     const tot=st.txns.filter(t=>window12.includes(t.ym)&&t.type==='saving'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0);
@@ -1116,7 +1116,7 @@ function getSavingTrendByDest(){
   result.total=result.spar_buffert+result.spar_barn+result.spar_ovrigt;
   return result;
 }
-
+ 
 function projectAccount(startBalance,monthlyContribution,annualRatePct,years){
   const rateMonthly=Math.pow(1+annualRatePct/100,1/12)-1;
   let balance=startBalance;
@@ -1127,24 +1127,24 @@ function projectAccount(startBalance,monthlyContribution,annualRatePct,years){
   }
   return yearly;
 }
-
+ 
 function renderSavingsCalc(){
   const nordnetEl=document.getElementById('proj_nordnet_now');
   if(!nordnetEl)return;
-
+ 
   const w=st.wealth||{};
   const nordnetNow=(w.nordnet||0); // Nordnet sparkonto
   const buffertNow=(w.buffert||0); // Nordnet buffertkonto
   const hbNow=(w.hb||0); // Handelsbanken — barnens fonder
-
+ 
   document.getElementById('proj_nordnet_now').textContent=fn(nordnetNow)+' kr';
   document.getElementById('proj_buffert_now').textContent=fn(buffertNow)+' kr';
   document.getElementById('proj_hb_now').textContent=fn(hbNow)+' kr';
-
+ 
   const rateNordnet=vn(document.getElementById('proj_rate_nordnet').value);
   const rateBuffert=vn(document.getElementById('proj_rate_buffert').value);
   const rateHB=vn(document.getElementById('proj_rate_hb').value);
-
+ 
   // Real saving trend, split by actual destination
   const trend=getSavingTrendByDest();
   const ownMonthly=trend.spar_ovrigt; // → Nordnet sparkonto
@@ -1153,20 +1153,20 @@ function renderSavingsCalc(){
   document.getElementById('proj_monthly_own').textContent=fn(ownMonthly)+' kr/mån';
   document.getElementById('proj_monthly_buffert').textContent=fn(buffertMonthly)+' kr/mån';
   document.getElementById('proj_monthly_kids').textContent=fn(kidsMonthly)+' kr/mån';
-
+ 
   // Allow override for own savings (Nordnet sparkonto) only
   const override=vn(document.getElementById('calc_monthly_override').value);
   const mNordnet=override>0?override:ownMonthly;
   const mBuffert=buffertMonthly;
   const mHB=kidsMonthly;
-
+ 
   const horizons=[3,5,10];
   const maxYears=10;
   const projNordnet=projectAccount(nordnetNow,mNordnet,rateNordnet,maxYears);
   const projBuffert=projectAccount(buffertNow,mBuffert,rateBuffert,maxYears);
   const projHB=projectAccount(hbNow,mHB,rateHB,maxYears);
   const projTotal=projNordnet.map((v,i)=>v+projBuffert[i]+projHB[i]);
-
+ 
   const startTotal=nordnetNow+buffertNow+hbNow;
   const totalMonthly=mNordnet+mBuffert+mHB;
   const cards=horizons.map(yr=>{
@@ -1178,7 +1178,7 @@ function renderSavingsCalc(){
       <div style="font-size:9px;color:#3B6D11;margin-top:2px">+${fn(gain)} avkastning</div>
     </div>`;
   }).join('');
-
+ 
   document.getElementById('calcResult').innerHTML=`
     <div style="display:flex;gap:8px;margin-bottom:.75rem">${cards}</div>
     <div style="background:#185FA5;border-radius:10px;padding:1rem;text-align:center">
@@ -1186,7 +1186,7 @@ function renderSavingsCalc(){
       <div style="font-size:26px;font-weight:700;color:#fff">${fn(projTotal[10])} kr</div>
       <div style="font-size:11px;color:#bcd9f0;margin-top:4px">Idag: ${fn(startTotal)} kr · Sparande/mån: ${fn(totalMonthly)} kr</div>
     </div>`;
-
+ 
   const labels=projTotal.map((_,i)=>'År '+i);
   if(calcChartInst){calcChartInst.destroy();calcChartInst=null;}
   calcChartInst=new Chart(document.getElementById('calcChart'),{
@@ -1200,7 +1200,7 @@ function renderSavingsCalc(){
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{font:{size:9},boxWidth:10}}},scales:{x:{ticks:{font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:6}},y:{ticks:{callback:n=>fn(n),font:{size:9}}}}}
   });
 }
-
+ 
 function showTab(id,btn){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -1211,7 +1211,7 @@ function showTab(id,btn){
   if(id==='wealth'){renderWMetrics();loadWInputs();renderWealthChart();renderSavingsCalc();}
   if(id==='data'){buildPdfMonthSelect();}
 }
-
+ 
 // ---- WHAT-IF SIMULATOR ----
 function buildWhatIfSelect(){
   const sel=document.getElementById('whatifCat');
@@ -1219,7 +1219,7 @@ function buildWhatIfSelect(){
   sel.innerHTML=EXP_CATS.map(c=>`<option value="${c.id}">${c.label}</option>`).join('');
   sel.onchange=renderWhatIf;
 }
-
+ 
 function renderWhatIf(){
   const sel=document.getElementById('whatifCat');
   const amtEl=document.getElementById('whatifAmount');
@@ -1229,17 +1229,17 @@ function renderWhatIf(){
   const amount=vn(amtEl.value);
   const cat=EXP_CATS.find(c=>c.id===catId);
   const ym=vYMview;
-
+ 
   if(!amount){out.innerHTML='<p style="font-size:12px;color:#aaa;text-align:center;padding:.5rem 0">Ange ett belopp för att se effekten</p>';return;}
-
+ 
   const budget=getRollingBudget(ym);
   const currentAvg=budget[catId]||0;
-
+ 
   // Simulate: this purchase added to current month's actual spend in that category
   const all=st.txns.filter(t=>t.ym===ym);
   const actualNow=all.filter(t=>t.type==='expense'&&t.cat===catId).reduce((s,t)=>s+t.amount,0);
   const actualNew=actualNow+amount;
-
+ 
   // New rolling average: replace this month's contribution in the 12m window
   const[y,m]=ym.split('-').map(Number);
   const window12=[];
@@ -1247,10 +1247,10 @@ function renderWhatIf(){
   // Current avg already excludes ym (window12 is months BEFORE ym) — so this purchase doesn't change
   // the 12m average used for budget comparison THIS month, but it WILL become part of the average
   // once ym itself rolls into a future month's window. We show both effects:
-
+ 
   const newAvgIfIncluded = (currentAvg*11 + actualNew) / 12;
   const deltaAvgFuture = newAvgIfIncluded - currentAvg;
-
+ 
   // Effect on this month's totals
   const inc=all.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
   const sav=all.filter(t=>t.type==='saving').reduce((s,t)=>s+t.amount,0);
@@ -1259,7 +1259,7 @@ function renderWhatIf(){
   const sparkvotNow=inc>0?(sav/inc*100):0;
   const netNow=inc-expTotal-sav;
   const netNew=inc-expNew-sav;
-
+ 
   out.innerHTML=`
     <div style="background:#f5f5f3;border-radius:10px;padding:.9rem 1rem">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
@@ -1284,7 +1284,7 @@ function renderWhatIf(){
     </div>
     <p style="font-size:11px;color:#aaa;margin-top:8px;line-height:1.4">Detta är en simulering — inget bokförs. "Snitt efter köpet" visar vad 12-månaderssnittet blir när den här månaden rullar in i framtida jämförelser.</p>`;
 }
-
+ 
 // PWA
 const manifest={name:'Min ekonomi',short_name:'Ekonomi',start_url:'./',display:'standalone',background_color:'#f5f5f3',theme_color:'#f5f5f3',icons:[{src:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%23185FA5"/><text y=".85em" font-size="65" x="50%" text-anchor="middle">💰</text></svg>',sizes:'any',type:'image/svg+xml'}]};
 const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
@@ -1299,7 +1299,7 @@ if('serviceWorker' in navigator){
 }
 const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
 if(isIOS&&!window.navigator.standalone){document.getElementById('installBanner').style.display='flex';}
-
+ 
 async function manualSync(){
   const msg=document.getElementById('syncMsg');
   msg.textContent='⏳ Synkar...';msg.style.color='#888';msg.style.display='block';
@@ -1307,7 +1307,7 @@ async function manualSync(){
   msg.textContent='✅ Synkad till GitHub!';msg.style.color='#3B6D11';
   setTimeout(()=>msg.style.display='none',3000);
 }
-
+ 
 function exportData(){
   const json=JSON.stringify(st);
   const box=document.getElementById('exportBox');
@@ -1321,7 +1321,7 @@ function exportData(){
     setTimeout(()=>document.getElementById('exportCopyMsg').style.display='none',3000);
   }catch(e){}
 }
-
+ 
 function importData(e){
   const file=e.target.files[0];
   if(!file)return;
@@ -1343,14 +1343,14 @@ function importData(e){
   };
   reader.readAsText(file);
 }
-
+ 
 function resetData(){
   if(!confirm('Återställa all data till originaldata (jan-maj 2026)? Detta kan inte ångras.'))return;
   st={txns:[...SEED],wealth:{nordnet:0,buffert:0,hb:0,bil:0,oa:0,csn:3000,blanco:183700,restvarde:0,kk:0,od:0},selCat:null,entryType:'expense',filterCat:'all',isFixed:false};
   save();renderLog();
   alert('Data återställd.');
 }
-
+ 
 // ---- PDF REPORT ----
 let pdfType='month';
 function setPdfType(t,btn){
@@ -1373,7 +1373,7 @@ function buildPdfMonthSelect(){
     sel.style.display='block';
   }
 }
-
+ 
 function generatePDF(){
   const printWin=window.open('','_blank');
   let html='';
@@ -1388,7 +1388,7 @@ function generatePDF(){
   printWin.document.close();
   setTimeout(()=>{printWin.print();},400);
 }
-
+ 
 function buildMonthReportHTML(ym){
   const[y,m]=ym.split('-').map(Number);
   const all=st.txns.filter(t=>t.ym===ym);
@@ -1397,19 +1397,19 @@ function buildMonthReportHTML(ym){
   const sav=all.filter(t=>t.type==='saving').reduce((s,t)=>s+t.amount,0);
   const net=inc-exp-sav;
   const budget=getRollingBudget(ym);
-
+ 
   const catRows=EXP_CATS.map(c=>{
     const actual=all.filter(t=>t.type==='expense'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0);
     const bud=Math.round(budget[c.id]||0);
     return `<tr><td>${c.label}</td><td style="text-align:right">${fn(actual)} kr</td><td style="text-align:right;color:#888">${fn(bud)} kr</td></tr>`;
   }).join('');
-
+ 
   const txnRows=all.map(t=>{
     const c=catById(t.cat);
     const sign=t.type==='income'?'+':'−';
     return `<tr><td>${t.desc}</td><td>${c.label}</td><td style="text-align:right">${sign}${fn(t.amount)} kr</td></tr>`;
   }).join('');
-
+ 
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Rapport ${MONTHS[m-1]} ${y}</title>
   <style>
     body{font-family:-apple-system,sans-serif;padding:30px;color:#1a1a18}
@@ -1439,14 +1439,14 @@ function buildMonthReportHTML(ym){
   <table><tr><td><b>Beskrivning</b></td><td><b>Kategori</b></td><td style="text-align:right"><b>Belopp</b></td></tr>${txnRows||'<tr><td colspan="3" style="color:#aaa">Inga poster</td></tr>'}</table>
   </body></html>`;
 }
-
+ 
 function buildYearReportHTML(yr){
   const allY=st.txns.filter(t=>t.ym&&t.ym.startsWith(yr+'-'));
   const tI=allY.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
   const tE=allY.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
   const tS=allY.filter(t=>t.type==='saving').reduce((s,t)=>s+t.amount,0);
   const net=tI-tE-tS;
-
+ 
   const monthRows=[...Array(12)].map((_,i)=>{
     const p=yr+'-'+String(i+1).padStart(2,'0');
     const mi=allY.filter(t=>t.ym===p&&t.type==='income').reduce((s,t)=>s+t.amount,0);
@@ -1455,11 +1455,11 @@ function buildYearReportHTML(yr){
     if(!mi&&!me&&!ms)return '';
     return `<tr><td>${MONTHS[i]}</td><td style="text-align:right">${fn(mi)}</td><td style="text-align:right">${fn(me)}</td><td style="text-align:right">${fn(ms)}</td><td style="text-align:right;font-weight:600">${fn(mi-me-ms)}</td></tr>`;
   }).join('');
-
+ 
   const catData=EXP_CATS.map(c=>({c,tot:allY.filter(t=>t.type==='expense'&&t.cat===c.id).reduce((s,t)=>s+t.amount,0)})).filter(x=>x.tot>0).sort((a,b)=>b.tot-a.tot);
   const totalCat=catData.reduce((s,x)=>s+x.tot,0)||1;
   const catRows=catData.map(x=>`<tr><td>${x.c.label}</td><td style="text-align:right">${fn(x.tot)} kr</td><td style="text-align:right">${Math.round(x.tot/totalCat*100)}%</td></tr>`).join('');
-
+ 
   return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Årsrapport ${yr}</title>
   <style>
     body{font-family:-apple-system,sans-serif;padding:30px;color:#1a1a18}
@@ -1489,15 +1489,15 @@ function buildYearReportHTML(yr){
   <table><tr><td><b>Kategori</b></td><td style="text-align:right"><b>Belopp</b></td><td style="text-align:right"><b>Andel</b></td></tr>${catRows}</table>
   </body></html>`;
 }
-
+ 
 document.getElementById('amount').oninput=checkBtn;
 const now=new Date();
 const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
 vYM=curYM;vYMview=curYM;
-
+ 
 // Show loading state
 document.querySelector('.app').insertAdjacentHTML('afterbegin','<div id="ghLoading" style="text-align:center;padding:2rem;color:#888;font-size:13px">⏳ Laddar din data från molnet...</div>');
-
+ 
 ghLoad().then(loaded=>{
   document.getElementById('ghLoading')?.remove();
   if(!loaded){
@@ -1516,3 +1516,4 @@ ghLoad().then(loaded=>{
 </script>
 </body>
 </html>
+ 
