@@ -847,7 +847,26 @@ function renderYear(){
     return `<span style="font-size:10px;color:${col};font-weight:600">${d>=0?'+':''}${d}% vs 2025</span>`;
   }
 
+  const res=tI-tE;
+  const p25Res=p25I-p25E;
+  const resPct=tI>0?Math.round(res/tI*100):0;
+  const p25ResPct=p25I>0?Math.round(p25Res/p25I*100):0;
+  const resDiff=res-p25Res;
+  const gap=res-tS;
+  const resCol=res>=0?'#3B6D11':'#A32D2D';
+  const p25Col=p25Res>=0?'#3B6D11':'#A32D2D';
+
   document.getElementById('ymetrics').innerHTML=`
+    <div class="metric" style="grid-column:span 4;background:#F3F8EC;border:1px solid #D5E5BF;margin-bottom:8px">
+      <div class="metric-label">Resultat (inkomst − konsumtion), ${moWith} mån</div>
+      <div class="metric-value" style="font-size:26px;color:${resCol}">${res>=0?'+':''}${fn(res)}</div>
+      <div style="font-size:11px;color:#666;margin-top:3px">${resPct}% av inkomsten · 2025 (samma mån): <span style="color:${p25Col};font-weight:600">${p25Res>=0?'+':''}${fn(p25Res)}</span> (${p25ResPct}%)</div>
+      <div style="font-size:11px;margin-top:3px;font-weight:600;color:${resDiff>=0?'#3B6D11':'#A32D2D'}">${resDiff>=0?'+':''}${fn(resDiff)} jämfört med 2025</div>
+      <div style="border-top:1px solid #D5E5BF;margin-top:8px;padding-top:6px;font-size:11px;color:#666">
+        Bokfört som sparande: <b>${fn(tS)}</b><br>
+        ${gap>=0?'Ej överfört än (ligger kvar som utrymme)':'Finansierat på annat sätt (t.ex. kreditkort/uttag)'}: <b>${fn(Math.abs(gap))}</b>
+      </div>
+    </div>
     <div class="metric" style="grid-column:span 4">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
         <div>
@@ -863,9 +882,9 @@ function renderYear(){
           <div style="margin-top:3px">${vsY(tE,p25E)}</div>
         </div>
         <div>
-          <div class="metric-label">Sparande</div>
+          <div class="metric-label">Bokfört sparande</div>
           <div class="metric-value spar">${fn(tS)}</div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px">2025: ${fn(p25S)}</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px">2025 (netto, inkl. uttag): ${fn(p25S)}</div>
           <div style="margin-top:3px">${vsY(tS,p25S)}</div>
         </div>
         <div style="background:#EEF4FF;border-radius:8px;padding:.6rem .7rem">
@@ -909,18 +928,17 @@ function renderYear(){
   const cat2025={bostad:p25Bostad,bil:p25Bil,barn:p25Barn,jag:p25Jag,mat:p25Mat,utflykter:p25Utflykter};
   document.getElementById('catbars').innerHTML=catData.length?catData.map(x=>{
     const prev=Math.round(cat2025[x.c.id]||0);
-    const pct=Math.round((x.tot/totalCat)*100);
     const vs=prev?Math.round(((x.tot-prev)/prev)*100):null;
-    const vsStr=vs!==null?`<span style="font-size:10px;font-weight:600;color:${vs<=0?'#3B6D11':'#A32D2D'}">${vs>=0?'+':''}${vs}%</span>`:'';
-    const fixedPct=x.tot>0?Math.round(x.fixed/x.tot*100):0;
-    const varPct=x.tot>0?Math.round(x.variable/x.tot*100):0;
+    const vsDiff=x.tot-prev;
+    const vsStr=vs!==null?`<span style="font-size:10px;font-weight:600;color:${vs<=0?'#3B6D11':'#A32D2D'}">${vs>=0?'+':''}${vs}% (${vs>=0?'+':''}${fn(vsDiff)} kr vs 2025)</span>`:'';
     const fixedStr=x.fixed>0?`<span style="color:#185FA5">📌 ${Math.round(x.fixed/x.tot*100)}% fast</span>`:'';
     const varStr=x.variable>0?`<span style="color:#888">〰️ ${Math.round(x.variable/x.tot*100)}% rörlig</span>`:'';
     return`<div class="bar-row">
       <div class="bar-label">${x.c.label}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${Math.round(x.tot/mx*100)}%;background:${x.c.color}"></div></div>
-      <div style="flex:0 0 120px;text-align:right;font-size:11px;color:#888;white-space:nowrap">${fn(x.tot)} · <strong>${pct}%</strong> ${vsStr}</div>
+      <div style="flex:0 0 auto;text-align:right;font-size:11px;color:#888;white-space:nowrap;padding-left:8px">${fn(x.tot)} kr</div>
     </div>
+    <div style="padding:0 0 2px 88px;font-size:10px;color:#aaa">${vsStr}</div>
     <div style="display:flex;gap:8px;padding:0 0 6px 88px;font-size:10px">${fixedStr}${fixedStr&&varStr?' · ':''}${varStr}</div>`;
   }).join(''):'<div class="empty">Inga poster</div>';
 
